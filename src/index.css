@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #1a1a1a;
+    color: #e5e7eb;
+}
+
+.snippet-card {
+    @apply bg-gray-800 rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow
+}
+
+.btn-primary {
+     @apply bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition;
+}
