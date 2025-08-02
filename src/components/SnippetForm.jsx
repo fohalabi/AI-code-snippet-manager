@@ -1,4 +1,10 @@
 import React, { useState } from 'react';
+import AceEditor from 'react-ace';
+import 'ace-builds/src-noconflict/mode-javascript';
+import 'ace-builds/src-noconflict/mode-python';
+import 'ace-builds/src-noconflict/mode-java';
+import 'ace-builds/src-noconflict/mode-c_cpp';
+import 'ace-builds/src-noconflict/theme-monokai';
 
 function SnippetForm({ addSnippet }) {
     const [title, setTitle] = useState('');
@@ -31,6 +37,17 @@ function SnippetForm({ addSnippet }) {
                 className="w-full mb-4 p-2 rounded bg-gray-900 rounded border border-gray-700"
                 rows="6"
             />
+            <AceEditor
+                mode={language.toLowerCase()}
+                theme="monokai"
+                value={code}
+                onChange={setCode}
+                name="code-editor"
+                editorProps={{ $blockScrolling: true }}
+                height="200px"
+                width="100%"
+                setOptions={{ useWorker: false }}
+            />
             <select
                 value={language}
                 onChange={(e) => setLanguage(e.target.value)}
@@ -50,7 +67,7 @@ function SnippetForm({ addSnippet }) {
             />
             <button type="submit" className="btn-primary">Save Snippet</button>
         </form>
-    )
+    );
 }
 
 export default SnippetForm;
