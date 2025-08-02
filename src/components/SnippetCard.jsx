@@ -12,7 +12,7 @@ function SnippetCard({ snippet }) {
             <p className="text-gray-400 mb-2">{snippet.language}</p>
             <pre className="rounded bg-gray-900 p-4 overflow-auto">
                 <code 
-                    className={`language-${snippet.language.toLoerCase}`}
+                    className={`language-${snippet.language.toLowerCase()}`}
                     dangerouslySetInnerHTML={{
                         __HTML: prism.highlight(snippet.code, prism.languages[snippet.language.toLowerCase()], snippet.language.toLowerCase())
                     }}
