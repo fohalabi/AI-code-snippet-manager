@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 function AIAssistant({ snippet }) {
@@ -40,12 +40,12 @@ function AIAssistant({ snippet }) {
                 {loading ? 'processing...' : 'Run AI'}
             </button>
             {aiResponse && (
-                <pre className='bg-gray-800 p-4 rounded overflow-auto'>
+                <pre className='bg-gray-800 p-4 rounded'>
                     <code>{aiResponse}</code>
                 </pre>
             )}
         </div>
-    );
+    )
 }
 
 export default AIAssistant;
