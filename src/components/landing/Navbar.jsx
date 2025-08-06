@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { RiCloseLargeFill } from 'react-icons/ri'
+import { ArrowRight } from 'lucide-react';
 
 const styles = {
-    link:"text-black hover:bg-gray-200 hover:shadow-md px-6 py-1 rounded-md transition-colors duration-700",
-    button: "bg-white text-black px-2 py-1 rounded-md hover:shadow-full hover:scale-90 transition-all duration-300 whitespace-nowrap",
-    mobileButton: "bg-white text-black px-4 py-3 rounded-md hover:scale-90 transtion-all duration-300 w-full whitespace-nowrap"
+    link:"text-gray-300 hover:bg-white/40 hover:shadow-md px-6 py-1 rounded-md transition-colors duration-700",
+    button: "group flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-500 hover:to-pink-500 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-90 hover:shadow-2xl hover:shadow-purple-500/25",
+    mobileButton: "group flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-500 hover:to-pink-500 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-90 hover:shadow-2xl hover:shadow-purple-500/25"
 }
 
 const Navbar = () => {
@@ -15,14 +16,14 @@ const Navbar = () => {
         setIsMenuOpen(!isMenuOpen)
     }
   return (
-    <nav className='bg-white/70 backdrop-blur-sm border-b border-gray-200 text-black sticky top-0 z-50 w-full p-4'>
+    <nav className='bg-slate-900/95 backdrop-blur-xl border-b border-gray-800/50 text-black sticky top-0 z-50 w-full p-4'>
         <div className='flex justify-between items-center mx-auto container'>
 
             {/* Desktop navbar */}
             <div className='hidden md:flex w-full'>
                 <div className='w-full'>
                     <div className='flex justify-between items-center'>
-                        <div className='w-36 text-3xl text-black'>
+                        <div className='text-2xl bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent'>
                             <span className='font-bold'>code</span>
                             <span>vault</span>
                         </div>
@@ -31,7 +32,10 @@ const Navbar = () => {
                             <li><a href="#" className={styles.link}>Pricing</a></li>
                             <li><a href="#" className={styles.link}>Blog</a></li>
                             <li><a href="#" className={styles.link}>About</a></li>
-                            <li><button className={styles.button}>Get Started</button></li>
+                            <li><button className={styles.button}>
+                                <span>Get Started</span>
+                                <ArrowRight className='w-4 h-4'/>
+                            </button></li>
                         </ul>
                     </div>
                 </div>
@@ -41,7 +45,7 @@ const Navbar = () => {
             <div className='md:hidden w-full'>
                 <div className='w-full'>
                     <div className='flex justify-between items-center'>
-                        <div className='text-2xl' >
+                        <div className='text-2xl bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent' >
                             <span className='font-bold'>code</span>
                             <span>vault</span>
                         </div>
@@ -59,12 +63,15 @@ const Navbar = () => {
                 <div className='flex flex-col space-y-4 text-center'>
 
                     <ul className='flex space-y-4 flex-col'>
-                        <li><a href="#" className="text-black hover:bg-white/75 px-6 py-1 rounded-md transition-all duration-300 block">Features</a></li>
-                        <li><a href="#" className="text-black hover:bg-white/75 px-6 py-1 rounded-md transition-all duration-300 block">Pricing</a></li>
-                        <li><a href="#" className="text-black hover:bg-white/75 px-6 py-1 rounded-md transition-all duration-300 block">Blog</a></li>
-                        <li><a href="#" className="text-black hover:bg-white/75 px-6 py-1 rounded-md transition-all duration-300 block">About</a></li>
+                        <li><a href="#" className="text-gray-300 hover:bg-white/40 px-6 py-1 rounded-md transition-all duration-300 block">Features</a></li>
+                        <li><a href="#" className="text-gray-300 hover:bg-white/40 px-6 py-1 rounded-md transition-all duration-300 block">Pricing</a></li>
+                        <li><a href="#" className="text-gray-300 hover:bg-white/40 px-6 py-1 rounded-md transition-all duration-300 block">Blog</a></li>
+                        <li><a href="#" className="text-gray-300 hover:bg-white/40 px-6 py-1 rounded-md transition-all duration-300 block">About</a></li>
                     </ul>
-                    <button className={`${styles.mobileButton}`}>Get Started</button>
+                    <button className={`${styles.mobileButton}`}>
+                        <span>Get Started</span>
+                        <ArrowRight className='w-4 h-4'/>
+                    </button>
                 </div>
             </div>
         )} 
