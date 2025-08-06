@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './components/landing/Navbar';
+import LandingPage from './pages/LandingPage';
 import './index.css';
 
 function App() {
 
   return (
     <>
-      <Navbar/>
+      <LandingPage />
     </>
   );
 }

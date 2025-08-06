@@ -16,6 +16,7 @@
     "axios": "^1.11.0",
     "firebase": "^12.0.0",
     "framer-motion": "^12.23.12",
+    "lucide-react": "^0.536.0",
     "prismjs": "^1.30.0",
     "react": "^19.1.0",
     "react-ace": "^14.0.1",
