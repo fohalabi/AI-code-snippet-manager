@@ -64,7 +64,7 @@ const Navbar = () => {
 
                     <ul className='flex space-y-4 flex-col'>
                         <li><a href="#features" className="scroll-smooth text-gray-300 hover:bg-white/40 px-6 py-1 rounded-md transition-all duration-300 block">Features</a></li>
-                        <li><a href="#" className="text-gray-300 hover:bg-white/40 px-6 py-1 rounded-md transition-all duration-300 block">Pricing</a></li>
+                        <li><a href="#pricing" className="scroll-smooth text-gray-300 hover:bg-white/40 px-6 py-1 rounded-md transition-all duration-300 block">Pricing</a></li>
                         <li><a href="#" className="text-gray-300 hover:bg-white/40 px-6 py-1 rounded-md transition-all duration-300 block">Blog</a></li>
                         <li><a href="#" className="text-gray-300 hover:bg-white/40 px-6 py-1 rounded-md transition-all duration-300 block">About</a></li>
                     </ul>

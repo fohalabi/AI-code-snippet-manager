@@ -26,7 +26,18 @@ const FeatureSection = () => {
     ];
 
   return (
-    <section id='features' className="py-20 px-4 bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 min-h-screen">
+    <section id='features' className="py-20 px-4 min-h-screen bg-gradient-to-hr from slate-900 via-purple-900 relative overflow-hidden">
+        <div 
+            className="absolute inset-0 opacity-20"
+            style={{
+                backgroundImage: `
+                linear-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99, 102, 241, 0.1) 1px, transparent 1px)
+                `,
+                backgroundSize: '40px 40px',
+                animation: 'gridMove 30s linear infinite'
+            }}
+        ></div>
         <div className="max-w-6xl mx-auto">
             {/* Section Header */}
             <div className="text-center mb-16">

@@ -80,14 +80,25 @@ const SocialProofSection = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-50 via-purple-50 to-pink-50">
+    <section className="py-20 min-h-screen bg-gradient-to-hr from slate-900 via-purple-900 relative overflow-hidden">
+      <div 
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(99, 102, 241, 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px',
+          animation: 'gridMove 30s linear infinite'
+        }}
+      ></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-slate-900 mb-4">
+          <h2 className="text-4xl font-bold text-white mb-4">
             Trusted by developers worldwide
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-xl text-purple-100 max-w-3xl mx-auto">
             Join thousands of developers who are already organizing their code more efficiently
           </p>
         </div>
@@ -97,7 +108,7 @@ const SocialProofSection = () => {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50"
+              className="bg-gradient-to-br from-slate-859 to-slate-900 rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50"
             >
               <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-purple-100 to-pink-100 mb-6`}>
                 <stat.icon className={`w-8 h-8 ${stat.color}`} />
@@ -114,19 +125,19 @@ const SocialProofSection = () => {
 
         {/* Testimonials */}
         <div className="mb-20">
-          <h3 className="text-3xl font-bold text-slate-900 text-center mb-12">
+          <h3 className="text-3xl font-bold text-white text-center mb-12">
             What developers are saying
           </h3>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial) => (
               <div
                 key={testimonial.id}
-                className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50 group hover:-translate-y-1"
+                className="bg-gradient-to-br from-slate-850 to-slate-900 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50 group hover:-translate-y-1"
               >
                 <div className="mb-6">
                   <StarRating rating={testimonial.rating} />
                 </div>
-                <blockquote className="text-slate-700 mb-6 leading-relaxed">
+                <blockquote className="text-purple-100 mb-6 leading-relaxed">
                   "{testimonial.quote}"
                 </blockquote>
                 <div className="flex items-center">
@@ -136,10 +147,10 @@ const SocialProofSection = () => {
                     className="w-12 h-12 rounded-full mr-4 ring-2 ring-purple-100"
                   />
                   <div>
-                    <div className="font-semibold text-slate-900">
+                    <div className="font-semibold text-white">
                       {testimonial.author}
                     </div>
-                    <div className="text-sm text-slate-600">
+                    <div className="text-sm text-slate-100">
                       {testimonial.title}
                     </div>
                     <div className="text-sm text-purple-600">
@@ -154,14 +165,14 @@ const SocialProofSection = () => {
 
         {/* Company Logos */}
         <div className="text-center">
-          <h3 className="text-2xl font-semibold text-slate-900 mb-8">
+          <h3 className="text-2xl font-semibold text-white mb-8">
             Trusted by innovative companies
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
             {companies.map((company, index) => (
               <div
                 key={index}
-                className="bg-white/70 backdrop-blur-sm rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-white/50 group hover:bg-white/90"
+                className="bg-gradient-to-br from-slate-100 to-slate-300 rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-white/50 group hover:bg-white/90"
               >
                 <div className="w-16 h-16 mx-auto bg-gradient-to-br from-slate-600 to-slate-800 rounded-lg flex items-center justify-center text-white font-bold text-lg group-hover:from-purple-600 group-hover:to-pink-600 transition-all duration-300">
                   {company.logo}
@@ -176,11 +187,11 @@ const SocialProofSection = () => {
 
         {/* Call to Action */}
         <div className="text-center mt-16">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-white/50 max-w-2xl mx-auto">
-            <h4 className="text-2xl font-bold text-slate-900 mb-4">
+          <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 shadow-lg border border-white/50 max-w-2xl mx-auto">
+            <h4 className="text-2xl font-bold text-white mb-4">
               Ready to join them?
             </h4>
-            <p className="text-slate-600 mb-6">
+            <p className="text-purple-100 mb-6">
               Start organizing your code snippets like a pro today
             </p>
             <button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">

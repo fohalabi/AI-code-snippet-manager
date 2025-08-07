@@ -23,14 +23,25 @@ const HowItWorks = () => {
   ];
 
   return (
-        <section id="how-it-works" className="py-20 px-4 bg-slate-50">
+        <section id="how-it-works" className="py-20 px-4 bg-gradient-to-hr from slate-900 via-purple-900 relative overflow-hidden">
+            <div 
+                className="absolute inset-0 opacity-20"
+                style={{
+                    backgroundImage: `
+                    linear-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(99, 102, 241, 0.1) 1px, transparent 1px)
+                    `,
+                    backgroundSize: '40px 40px',
+                    animation: 'gridMove 30s linear infinite'
+                }}
+            ></div>
             <div className="max-w-6xl mx-auto">
                 {/* Section Header */}
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
                         Get Organized in Minutes
                     </h2>
-                    <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-xl text-purple-100 max-w-2xl mx-auto leading-relaxed">
                         Transform your code management workflow with our simple three-step process
                     </p>
                 </div>
@@ -75,10 +86,10 @@ const HowItWorks = () => {
 
                                     {/* Step Content */}
                                     <div className="space-y-4">
-                                        <h3 className="text-xl font-semibold text-slate-900 group-hover:text-purple-700 transition-colors duration-300">
+                                        <h3 className="text-xl font-semibold text-purple-100 group-hover:text-purple-700 transition-colors duration-300">
                                             {step.title}
                                         </h3>
-                                        <p className="text-slate-600 leading-relaxed max-w-sm mx-auto">
+                                        <p className="text-gray-200 leading-relaxed max-w-sm mx-auto">
                                             {step.description}
                                         </p>
                                     </div>
