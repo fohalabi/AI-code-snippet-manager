@@ -4,7 +4,7 @@ import { RiCloseLargeFill } from 'react-icons/ri'
 import { ArrowRight } from 'lucide-react';
 
 const styles = {
-    link:"text-gray-300 hover:bg-white/40 hover:shadow-md px-6 py-1 rounded-md transition-colors duration-700",
+    link:" scroll-smooth text-gray-300 hover:bg-white/40 hover:shadow-md px-6 py-1 rounded-md transition-colors duration-700",
     button: "group flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-500 hover:to-pink-500 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-90 hover:shadow-2xl hover:shadow-purple-500/25",
     mobileButton: "group flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-500 hover:to-pink-500 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-90 hover:shadow-2xl hover:shadow-purple-500/25"
 }
@@ -24,11 +24,11 @@ const Navbar = () => {
                 <div className='w-full'>
                     <div className='flex justify-between items-center'>
                         <div className='text-2xl bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent'>
-                            <span className='font-bold'>code</span>
-                            <span>vault</span>
+                            <span className='font-bold'>Code</span>
+                            <span>Snap</span>
                         </div>
                         <ul className='flex space-x-4 items-center'>
-                            <li><a href="#" className={styles.link}>Features</a></li>
+                            <li><a href="#features" className={styles.link}>Features</a></li>
                             <li><a href="#" className={styles.link}>Pricing</a></li>
                             <li><a href="#" className={styles.link}>Blog</a></li>
                             <li><a href="#" className={styles.link}>About</a></li>
@@ -46,8 +46,8 @@ const Navbar = () => {
                 <div className='w-full'>
                     <div className='flex justify-between items-center'>
                         <div className='text-2xl bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent' >
-                            <span className='font-bold'>code</span>
-                            <span>vault</span>
+                            <span className='font-bold'>Code</span>
+                            <span>Snap</span>
                         </div>
                         <div className='cursor-pointer'>
                             {isMenuOpen ? <RiCloseLargeFill size={20} onClick={toggleMenu} /> : <GiHamburgerMenu size={20} onClick={toggleMenu} />}
@@ -63,7 +63,7 @@ const Navbar = () => {
                 <div className='flex flex-col space-y-4 text-center'>
 
                     <ul className='flex space-y-4 flex-col'>
-                        <li><a href="#" className="text-gray-300 hover:bg-white/40 px-6 py-1 rounded-md transition-all duration-300 block">Features</a></li>
+                        <li><a href="#features" className="scroll-smooth text-gray-300 hover:bg-white/40 px-6 py-1 rounded-md transition-all duration-300 block">Features</a></li>
                         <li><a href="#" className="text-gray-300 hover:bg-white/40 px-6 py-1 rounded-md transition-all duration-300 block">Pricing</a></li>
                         <li><a href="#" className="text-gray-300 hover:bg-white/40 px-6 py-1 rounded-md transition-all duration-300 block">Blog</a></li>
                         <li><a href="#" className="text-gray-300 hover:bg-white/40 px-6 py-1 rounded-md transition-all duration-300 block">About</a></li>
