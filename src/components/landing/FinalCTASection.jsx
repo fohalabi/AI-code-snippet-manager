@@ -10,7 +10,7 @@ const FinalCTASection = () => {
 
   const handleGetStarted = () => {
     // Add your navigation logic here
-    console.log('Get Started clicked');
+    window.location.href = '/auth';
   };
 
   return (

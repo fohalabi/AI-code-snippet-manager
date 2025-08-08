@@ -3,6 +3,7 @@ import { AlertCircle, CheckCircle } from 'lucide-react';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import SocialAuthButtons from './SocialAuthButtons';
+import AuthUtils from '../../utils/auth';
 
 // Auth Page Component
 const AuthPage = ({ initialMode = 'login' }) => {
