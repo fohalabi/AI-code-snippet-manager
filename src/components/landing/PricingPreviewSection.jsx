@@ -185,6 +185,7 @@ const PricingSection = () => {
           <Button
             variant="gradient"
             icon={<ArrowRight className="w-5 h-5" />}
+            className='mx-auto'
           >
             See Full Pricing
           </Button>

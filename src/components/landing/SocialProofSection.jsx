@@ -176,7 +176,10 @@ const SocialProofSection = () => {
           <p className="text-purple-100 mb-6">
             Start organizing your code snippets like a pro today
           </p>
-          <Button variant="gradient">
+          <Button 
+            variant="gradient"
+            className='mx-auto'
+          >
             Get Started Free
           </Button>
         </Card>
