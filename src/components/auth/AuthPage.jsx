@@ -1,0 +1,169 @@
+import React, { useState } from 'react';
+import { AlertCircle, CheckCircle } from 'lucide-react';
+import LoginForm from './LoginForm';
+import SignupForm from './SignupForm';
+import SocialAuthButtons from './SocialAuthButtons';
+
+// Auth Page Component
+const AuthPage = ({ initialMode = 'login' }) => {
+  const [mode, setMode] = useState(initialMode);
+  const [loading, setLoading] = useState(false);
+  const [notification, setNotification] = useState(null);
+
+  const showNotification = (message, type = 'error') => {
+    setNotification({ message, type });
+    setTimeout(() => setNotification(null), 5000);
+  };
+
+  const handleEmailAuth = async (email, password, name = null) => {
+    setLoading(true);
+    try {
+      const authFunction = mode === 'login' ? AuthUtils.login : AuthUtils.signup;
+      const result = name ? await authFunction(email, password, name) : await authFunction(email, password);
+      
+      showNotification(`${mode === 'login' ? 'Signed in' : 'Account created'} successfully!`, 'success');
+      // In a real app, you'd redirect to dashboard here
+      console.log('Auth success:', result);
+    } catch (error) {
+      showNotification(error.message, 'error');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSocialAuth = async (provider) => {
+    setLoading(true);
+    try {
+      const authFunction = provider === 'google' ? AuthUtils.loginWithGoogle : AuthUtils.loginWithGitHub;
+      const result = await authFunction();
+      
+      showNotification(`Signed in with ${provider} successfully!`, 'success');
+      console.log('Social auth success:', result);
+    } catch (error) {
+      showNotification(`Failed to sign in with ${provider}`, 'error');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-4 relative overflow-hidden">
+      {/* Animated grid background */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            linear-gradient(to right, rgb(148 163 184) 1px, transparent 1px),
+            linear-gradient(to bottom, rgb(148 163 184) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px',
+          animation: 'grid-move 20s linear infinite'
+        }} />
+      </div>
+
+      {/* Floating orbs */}
+      <div className="absolute top-20 left-20 w-32 h-32 bg-purple-500/20 rounded-full blur-xl animate-pulse" />
+      <div className="absolute bottom-20 right-20 w-48 h-48 bg-pink-500/20 rounded-full blur-xl animate-pulse delay-1000" />
+
+      {/* Notification */}
+      {notification && (
+        <div className={`
+          fixed top-4 right-4 z-50 max-w-sm p-4 rounded-lg shadow-lg backdrop-blur-sm border
+          transition-all duration-500 ease-out
+          ${notification.type === 'success' 
+            ? 'bg-green-500/20 border-green-500/50 text-green-100' 
+            : 'bg-red-500/20 border-red-500/50 text-red-100'
+          }
+        `}>
+          <div className="flex items-center">
+            {notification.type === 'success' ? (
+              <CheckCircle className="w-5 h-5 mr-2 flex-shrink-0" />
+            ) : (
+              <AlertCircle className="w-5 h-5 mr-2 flex-shrink-0" />
+            )}
+            <span className="text-sm">{notification.message}</span>
+          </div>
+        </div>
+      )}
+
+      {/* Auth Card */}
+      <div className="w-full max-w-md">
+        <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-8">
+          {/* Header */}
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold text-white mb-2">
+              Welcome Back
+            </h1>
+            <p className="text-gray-400">
+              {mode === 'login' 
+                ? 'Sign in to your account to continue' 
+                : 'Create your account to get started'
+              }
+            </p>
+          </div>
+
+          {/* Mode Toggle */}
+          <div className="flex bg-white/5 rounded-lg p-1 mb-8">
+            <button
+              onClick={() => setMode('login')}
+              disabled={loading}
+              className={`
+                flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-300
+                ${mode === 'login'
+                  ? 'bg-white/20 text-white shadow-lg'
+                  : 'text-gray-400 hover:text-white'
+                }
+              `}
+            >
+              Login
+            </button>
+            <button
+              onClick={() => setMode('signup')}
+              disabled={loading}
+              className={`
+                flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-300
+                ${mode === 'signup'
+                  ? 'bg-white/20 text-white shadow-lg'
+                  : 'text-gray-400 hover:text-white'
+                }
+              `}
+            >
+              Sign Up
+            </button>
+          </div>
+
+          {/* Forms */}
+          <div className="transition-all duration-500 ease-out">
+            {mode === 'login' ? (
+              <LoginForm onSubmit={handleEmailAuth} loading={loading} />
+            ) : (
+              <SignupForm onSubmit={handleEmailAuth} loading={loading} />
+            )}
+          </div>
+
+          {/* Social Auth */}
+          <div className="mt-8">
+            <SocialAuthButtons
+              onGoogleAuth={() => handleSocialAuth('google')}
+              onGitHubAuth={() => handleSocialAuth('github')}
+              loading={loading}
+            />
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="text-center mt-6 text-sm text-gray-400">
+          Secure authentication powered by modern encryption
+        </div>
+      </div>
+
+      <style jsx>{`
+        @keyframes grid-move {
+          0% { transform: translate(0, 0); }
+          100% { transform: translate(50px, 50px); }
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default AuthPage;
