@@ -1,8 +1,8 @@
 import React from 'react';
 import { Star, Users, Code, Zap } from 'lucide-react';
-import Button from './ui/Button';
-import Card from './ui/Card';
-import Section from './ui/Section';
+import Button from '../ui/Button';
+import Card from '../ui/Card';
+import Section from '../ui/Section';
 
 const SocialProofSection = () => {
   const testimonials = [
