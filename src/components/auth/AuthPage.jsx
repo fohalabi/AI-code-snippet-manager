@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AlertCircle, CheckCircle } from 'lucide-react';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
-import SocialAuthButtons from './SocialAuthButtons';
+import SocialAuthButtons from './SocialAuthButton'
 import AuthUtils from '../../utils/auth';
 
 // Auth Page Component

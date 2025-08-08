@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Zap, Lightbulb, Lock, Star, CheckCircle, MessageCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+
 
 const FinalCTASection = () => {
+  const navigate = useNavigate ();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -10,7 +13,7 @@ const FinalCTASection = () => {
 
   const handleGetStarted = () => {
     // Add your navigation logic here
-    window.location.href = '/auth';
+    navigate('/auth');
   };
 
   return (

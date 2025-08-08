@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Code, Sparkles, ArrowRight, Play, Copy, Star } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
 import Section from '../ui/Section';
@@ -7,6 +8,7 @@ import Section from '../ui/Section';
 const HeroSection = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [activeSnippet, setActiveSnippet] = useState(0);
+    const navigate = useNavigate();
 
     useEffect(() => {
         setIsVisible(true);
@@ -78,6 +80,7 @@ const HeroSection = () => {
                             variant="primary" 
                             size="lg"
                             icon={<ArrowRight className="w-5 h-5" />}
+                            onClick={() => navigate('/auth')}
                         >
                             Get Started Free
                         </Button>

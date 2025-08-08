@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Loader2, CheckCircle } from 'lucide-react';
-import AuthPage from '../auth/AuthPage';
+import AuthPage from '../components/auth/AuthPage';
 import AuthUtils from '../utils/auth';
 
 // Main Auth Component with routing logic

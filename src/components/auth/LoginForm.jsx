@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Lock, Loader2 } from 'lucide-react';
-import FloatingLabelInput from '../components/FloatingLabelInput';
-import AuthUtils from '../utils/auth';
+import FloatingLabelInput from '../ui/FloatingLabelInput'
+import AuthUtils from '../../utils/auth';
 
 // Login Form Component
 const LoginForm = ({ onSubmit, loading }) => {

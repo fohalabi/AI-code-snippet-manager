@@ -1,10 +1,12 @@
 import React from 'react';
 import { Star, Users, Code, Zap } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
 import Section from '../ui/Section';
 
 const SocialProofSection = () => {
+  const navigate = useNavigate();
   const testimonials = [
     {
       id: 1,
@@ -179,6 +181,7 @@ const SocialProofSection = () => {
           <Button 
             variant="gradient"
             className='mx-auto'
+            onClick={() => navigate('/auth')}
           >
             Get Started Free
           </Button>

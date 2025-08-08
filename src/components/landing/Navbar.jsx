@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { RiCloseLargeFill } from 'react-icons/ri'
 import { ArrowRight } from 'lucide-react';
@@ -10,7 +11,8 @@ const styles = {
 }
 
 const Navbar = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const navigate = useNavigate();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen)
@@ -32,10 +34,14 @@ const Navbar = () => {
                             <li><a href="#" className={styles.link}>Pricing</a></li>
                             <li><a href="#" className={styles.link}>Blog</a></li>
                             <li><a href="#" className={styles.link}>About</a></li>
-                            <li><button className={styles.button}>
-                                <span>Get Started</span>
-                                <ArrowRight className='w-4 h-4'/>
-                            </button></li>
+                            <li><button 
+                                    className={styles.button}
+                                    onClick={() => navigate('/auth')}
+                                >
+                                    <span>Get Started</span>
+                                    <ArrowRight className='w-4 h-4'/>
+                                </button>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -68,7 +74,10 @@ const Navbar = () => {
                         <li><a href="#" className="text-gray-300 hover:bg-white/40 px-6 py-1 rounded-md transition-all duration-300 block">Blog</a></li>
                         <li><a href="#" className="text-gray-300 hover:bg-white/40 px-6 py-1 rounded-md transition-all duration-300 block">About</a></li>
                     </ul>
-                    <button className={`${styles.mobileButton}`}>
+                    <button 
+                        className={`${styles.mobileButton}`}
+                        onClick={() => navigate('/auth')}
+                    >
                         <span>Get Started</span>
                         <ArrowRight className='w-4 h-4'/>
                     </button>
