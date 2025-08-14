@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import { Mail, Lock, User, Loader2, CheckCircle } from 'lucide-react';
 import FloatingLabelInput from '../ui/FloatingLabelInput';
 import AuthUtils from '../../utils/auth';
+import { useAuth } from '../../contexts/AuthContext';
 
 // Signup Form Component
-const SignupForm = ({ onSubmit, loading }) => {
+const SignupForm = () => {
   const [formData, setFormData] = useState({ name: '', email: '', password: '', confirmPassword: '' });
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const { signUp, loading } = useAuth();
 
   const validateForm = () => {
     const newErrors = {};
@@ -42,7 +45,7 @@ const SignupForm = ({ onSubmit, loading }) => {
 
   const handleSubmit = () => {
     if (validateForm()) {
-      onSubmit(formData.email, formData.password, formData.name);
+      signUp(formData.email, formData.password, formData.name);
     }
   };
 

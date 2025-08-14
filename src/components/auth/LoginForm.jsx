@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import { Mail, Lock, Loader2 } from 'lucide-react';
 import FloatingLabelInput from '../ui/FloatingLabelInput'
 import AuthUtils from '../../utils/auth';
+import  { useAuth } from '../../hooks/useAuth';
 
 // Login Form Component
-const LoginForm = ({ onSubmit, loading }) => {
+const LoginForm = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
+
+  const { signIn, loading } = useAuth();
 
   const validateForm = () => {
     const newErrors = {};
@@ -28,7 +31,7 @@ const LoginForm = ({ onSubmit, loading }) => {
 
   const handleSubmit = () => {
     if (validateForm()) {
-      onSubmit(formData.email, formData.password);
+      signIn(formData.email, formData.password);
     }
   };
 
