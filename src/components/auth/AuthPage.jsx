@@ -3,47 +3,57 @@ import { AlertCircle, CheckCircle } from 'lucide-react';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import SocialAuthButtons from './SocialAuthButton'
-import AuthUtils from '../../utils/auth';
+import { useAuth } from '../../hooks/useAuth';
 
 // Auth Page Component
 const AuthPage = ({ initialMode = 'login' }) => {
   const [mode, setMode] = useState(initialMode);
-  const [loading, setLoading] = useState(false);
   const [notification, setNotification] = useState(null);
 
+  const { signIn, signUp, signInWithGoogle, signInWithGithub, loading} = useAuth();
+  
+  // Get Supabase auth functions
   const showNotification = (message, type = 'error') => {
     setNotification({ message, type });
     setTimeout(() => setNotification(null), 5000);
   };
 
   const handleEmailAuth = async (email, password, name = null) => {
-    setLoading(true);
     try {
-      const authFunction = mode === 'login' ? AuthUtils.login : AuthUtils.signup;
-      const result = name ? await authFunction(email, password, name) : await authFunction(email, password);
-      
-      showNotification(`${mode === 'login' ? 'Signed in' : 'Account created'} successfully!`, 'success');
-      // In a real app, you'd redirect to dashboard here
-      console.log('Auth success:', result);
+      let result;
+      if (mode === 'login'){
+        result = await signIn(email, password);
+      } else {
+        result = await signUp(email, password, name);
+      }
+
+      if (result.error) {
+        showNotification(result.error.message, 'error');
+      } else {
+        showNotification(`${mode === 'login' ? 'Signed in' : 'Account created'} successfully!`, 'success');
+      }
     } catch (error) {
       showNotification(error.message, 'error');
-    } finally {
-      setLoading(false);
     }
   };
 
   const handleSocialAuth = async (provider) => {
-    setLoading(true);
     try {
-      const authFunction = provider === 'google' ? AuthUtils.loginWithGoogle : AuthUtils.loginWithGitHub;
-      const result = await authFunction();
-      
-      showNotification(`Signed in with ${provider} successfully!`, 'success');
-      console.log('Social auth success:', result);
+      let result;
+      if (provider === 'google') {
+        result = await signInWithGoogle();
+      } else {
+        result = await signInWithGithub();
+      }
+
+      if (result.error) {
+        showNotification(result.error.message, 'error');
+      } else {
+        showNotification(`Signed in with ${provider} successfully!`, 'success');
+      }
+
     } catch (error) {
       showNotification(`Failed to sign in with ${provider}`, 'error');
-    } finally {
-      setLoading(false);
     }
   };
 
