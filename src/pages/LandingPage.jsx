@@ -10,16 +10,16 @@ import Footer from '../components/landing/Footer';
 
 const LandingPage = () => {
   return (
-    <>
+    <div className="min-h-screen bg-gradient-to-b from-ai-dark via-ai-dark-lighter to-ai-dark">
       <Navbar />
-      < HeroSection/>
+      <HeroSection />
       <FeatureSection />
       <HowItWorks /> 
       <SocialProofSection />
       <PricingPreviewSection />
-      <FinalCTASection/>
+      <FinalCTASection />
       <Footer />
-    </>
+    </div>
   )
 }
 
