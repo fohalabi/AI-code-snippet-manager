@@ -26,9 +26,11 @@ const Navbar = () => {
                 <div className='hidden md:flex w-full'>
                     <div className='w-full'>
                         <div className='flex justify-between items-center'>
-                            <div className='text-2xl bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent'>
-                                <span className='font-bold'>Code</span>
-                                <span>Snap</span>
+                            <div className="flex-shrink-0 flex items-center">
+                                <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                                    <span className="text-white font-bold text-sm">C</span>
+                                </div>
+                                <span className="ml-2 text-lg font-semibold text-white">CodeSnap</span>
                             </div>
                             <ul className='flex space-x-4 items-center'>
                                 <li><a href="#features" className={styles.link}>Features</a></li>
@@ -52,9 +54,11 @@ const Navbar = () => {
                 <div className='md:hidden w-full'>
                     <div className='w-full'>
                         <div className='flex justify-between items-center'>
-                            <div className='text-2xl bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent' >
-                                <span className='font-bold'>Code</span>
-                                <span>Snap</span>
+                            <div className="flex-shrink-0 flex items-center">
+                                <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                                    <span className="text-white font-bold text-sm">C</span>
+                                </div>
+                                <span className="ml-2 text-lg font-semibold text-white">CodeSnap</span>
                             </div>
                             <div className='cursor-pointer bg-slate-700/50 p-2 rounded-md hover:bg-slate-700/70 transition-colors'>
                                 <GiHamburgerMenu size={20} onClick={toggleMenu} className="text-white" />
