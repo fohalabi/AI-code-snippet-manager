@@ -31,10 +31,10 @@ const FeatureSection = () => {
         <Section id='features' minHeight={true}>
             {/* Section Header */}
             <div className="text-center mb-16">
-                <h2 className="text-5xl font-bold text-white mb-6 tracking-tight">
+                <h2 className="text-5xl font-bold text-black mb-6 tracking-tight">
                     Why Choose CodeSnap AI?
                 </h2>
-                <p className="text-xl text-purple-100 max-w-2xl mx-auto leading-relaxed">
+                <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
                     Revolutionize your development workflow with intelligent code management and AI-powered assistance
                 </p>
             </div>
@@ -46,17 +46,17 @@ const FeatureSection = () => {
                     return (
                         <Card key={index} variant="feature">
                             {/* Icon */}
-                            <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl 
+                            <div className="w-16 h-16 bg-black rounded-xl 
                               flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 
                               transition-transform duration-300 shadow-lg">
                                 <Icon className="w-8 h-8 text-white" />
                             </div>
 
                             {/* Content */}
-                            <h3 className="text-2xl font-semibold text-white mb-4 group-hover:text-purple-100 transition-colors">
+                            <h3 className="text-2xl font-semibold text-black mb-4 group-hover:text-gray-800 transition-colors">
                                 {feature.title}
                             </h3>
-                            <p className="text-slate-300 leading-relaxed group-hover:text-slate-200 transition-colors">
+                            <p className="text-gray-600 leading-relaxed group-hover:text-gray-800 transition-colors">
                                 {feature.description}
                             </p>
                         </Card>
@@ -66,9 +66,9 @@ const FeatureSection = () => {
 
             {/* CTA section */}
             <div className="text-center mt-16">
-                <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-lg rounded-full px-6 py-3 border border-white/20">
-                    <div className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-pulse"></div>
-                    <span className="text-slate-200 text-sm font-medium">Trusted by 50,000+ developers worldwide</span>
+                <div className="inline-flex items-center space-x-2 bg-gray-100 backdrop-blur-lg rounded-full px-6 py-3 border border-gray-300">
+                    <div className="w-2 h-2 bg-black rounded-full animate-pulse"></div>
+                    <span className="text-gray-700 text-sm font-medium">Trusted by 50,000+ developers worldwide</span>
                 </div>
             </div>
         </Section>

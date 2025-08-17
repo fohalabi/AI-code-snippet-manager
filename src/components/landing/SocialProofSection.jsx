@@ -42,19 +42,19 @@ const SocialProofSection = () => {
       number: "15,000+",
       label: "Active Developers",
       icon: Users,
-      color: "text-purple-400"
+      color: "text-gray-600"
     },
     {
       number: "750,000+",
       label: "Code Snippets Organized",
       icon: Code,
-      color: "text-pink-400"
+      color: "text-black"
     },
     {
       number: "99.9%",
       label: "Uptime Guarantee",
       icon: Zap,
-      color: "text-purple-400"
+      color: "text-gray-600"
     }
   ];
 
@@ -76,7 +76,7 @@ const SocialProofSection = () => {
             className={`w-4 h-4 ${
               i < rating
                 ? 'text-yellow-400 fill-current'
-                : 'text-slate-300'
+                : 'text-gray-300'
             }`}
           />
         ))}
@@ -88,10 +88,10 @@ const SocialProofSection = () => {
     <Section minHeight={true} containerSize="lg">
       {/* Header */}
       <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-white mb-4">
+        <h2 className="text-4xl font-bold text-black mb-4">
           Trusted by developers worldwide
         </h2>
-        <p className="text-xl text-purple-100 max-w-3xl mx-auto">
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
           Join thousands of developers who are already organizing their code more efficiently
         </p>
       </div>
@@ -100,13 +100,13 @@ const SocialProofSection = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
         {stats.map((stat, index) => (
           <Card key={index} variant="stats">
-            <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-purple-100 to-pink-100 mb-6`}>
+            <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 mb-6`}>
               <stat.icon className={`w-8 h-8 ${stat.color}`} />
             </div>
-            <div className={`text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2`}>
+            <div className={`text-4xl font-bold text-black mb-2`}>
               {stat.number}
             </div>
-            <div className="text-slate-600 font-medium">
+            <div className="text-gray-600 font-medium">
               {stat.label}
             </div>
           </Card>
@@ -115,7 +115,7 @@ const SocialProofSection = () => {
 
       {/* Testimonials */}
       <div className="mb-20">
-        <h3 className="text-3xl font-bold text-white text-center mb-12">
+        <h3 className="text-3xl font-bold text-black text-center mb-12">
           What developers are saying
         </h3>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -124,23 +124,23 @@ const SocialProofSection = () => {
               <div className="mb-6">
                 <StarRating rating={testimonial.rating} />
               </div>
-              <blockquote className="text-purple-100 mb-6 leading-relaxed">
+              <blockquote className="text-gray-700 mb-6 leading-relaxed">
                 "{testimonial.quote}"
               </blockquote>
               <div className="flex items-center">
                 <img
                   src={testimonial.avatar}
                   alt={testimonial.author}
-                  className="w-12 h-12 rounded-full mr-4 ring-2 ring-purple-100"
+                  className="w-12 h-12 rounded-full mr-4 ring-2 ring-gray-200"
                 />
                 <div>
-                  <div className="font-semibold text-white">
+                  <div className="font-semibold text-black">
                     {testimonial.author}
                   </div>
-                  <div className="text-sm text-slate-100">
+                  <div className="text-sm text-gray-600">
                     {testimonial.title}
                   </div>
-                  <div className="text-sm text-purple-600">
+                  <div className="text-sm text-gray-500">
                     {testimonial.company}
                   </div>
                 </div>
@@ -152,16 +152,16 @@ const SocialProofSection = () => {
 
       {/* Company Logos */}
       <div className="text-center">
-        <h3 className="text-2xl font-semibold text-white mb-8">
+        <h3 className="text-2xl font-semibold text-black mb-8">
           Trusted by innovative companies
         </h3>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
           {companies.map((company, index) => (
             <Card key={index} variant="company">
-              <div className="w-16 h-16 mx-auto bg-gradient-to-br from-slate-600 to-slate-800 rounded-lg flex items-center justify-center text-white font-bold text-lg group-hover:from-purple-600 group-hover:to-pink-600 transition-all duration-300">
+              <div className="w-16 h-16 mx-auto bg-gray-200 hover:bg-black rounded-lg flex items-center justify-center text-gray-700 hover:text-white font-bold text-lg transition-all duration-300">
                 {company.logo}
               </div>
-              <div className="mt-3 text-sm font-medium text-slate-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="mt-3 text-sm font-medium text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 {company.name}
               </div>
             </Card>
@@ -172,14 +172,14 @@ const SocialProofSection = () => {
       {/* Call to Action */}
       <div className="text-center mt-16">
         <Card variant="cta" className="max-w-2xl mx-auto">
-          <h4 className="text-2xl font-bold text-white mb-4">
+          <h4 className="text-2xl font-bold text-black mb-4">
             Ready to join them?
           </h4>
-          <p className="text-purple-100 mb-6">
+          <p className="text-gray-600 mb-6">
             Start organizing your code snippets like a pro today
           </p>
           <Button 
-            variant="gradient"
+            variant="primary"
             className='mx-auto'
             onClick={() => navigate('/auth')}
           >
