@@ -21,7 +21,7 @@ const SocialAuthButtons = ({ onGoogleAuth, onGitHubAuth, loading }) => {
           disabled={loading}
           className="
             flex items-center justify-center px-4 py-3 border border-white/20 rounded-lg
-            bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white/30
+            bg-black backdrop-blur-sm hover:bg-black/90 hover:border-white/30
             text-white text-sm font-medium
             transition-all duration-300 ease-out
             hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20
@@ -44,7 +44,7 @@ const SocialAuthButtons = ({ onGoogleAuth, onGitHubAuth, loading }) => {
           disabled={loading}
           className="
             flex items-center justify-center px-4 py-3 border border-white/20 rounded-lg
-            bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white/30
+            bg-black backdrop-blur-sm hover:bg-black/90 hover:border-white/30
             text-white text-sm font-medium
             transition-all duration-300 ease-out
             hover:scale-105 hover:shadow-lg hover:shadow-gray-500/20

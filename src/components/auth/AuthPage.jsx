@@ -58,22 +58,7 @@ const AuthPage = ({ initialMode = 'login' }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Animated grid background */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
-            linear-gradient(to right, rgb(148 163 184) 1px, transparent 1px),
-            linear-gradient(to bottom, rgb(148 163 184) 1px, transparent 1px)
-          `,
-          backgroundSize: '50px 50px',
-          animation: 'grid-move 20s linear infinite'
-        }} />
-      </div>
-
-      {/* Floating orbs */}
-      <div className="absolute top-20 left-20 w-32 h-32 bg-purple-500/20 rounded-full blur-xl animate-pulse" />
-      <div className="absolute bottom-20 right-20 w-48 h-48 bg-pink-500/20 rounded-full blur-xl animate-pulse delay-1000" />
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 relative overflow-hidden">
 
       {/* Notification */}
       {notification && (
@@ -101,7 +86,7 @@ const AuthPage = ({ initialMode = 'login' }) => {
         <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-8">
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-white mb-2">
+            <h1 className="text-3xl font-bold text-black mb-2">
               Welcome Back
             </h1>
             <p className="text-gray-400">
@@ -120,8 +105,8 @@ const AuthPage = ({ initialMode = 'login' }) => {
               className={`
                 flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-300
                 ${mode === 'login'
-                  ? 'bg-white/20 text-white shadow-lg'
-                  : 'text-gray-400 hover:text-white'
+                  ? 'bg-black text-white shadow-lg'
+                  : 'text-gray-400 hover:text-black'
                 }
               `}
             >
@@ -133,8 +118,8 @@ const AuthPage = ({ initialMode = 'login' }) => {
               className={`
                 flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-300
                 ${mode === 'signup'
-                  ? 'bg-white/20 text-white shadow-lg'
-                  : 'text-gray-400 hover:text-white'
+                  ? 'bg-black text-white shadow-lg'
+                  : 'text-gray-400 hover:text-black'
                 }
               `}
             >

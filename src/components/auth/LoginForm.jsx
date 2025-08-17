@@ -74,16 +74,16 @@ const LoginForm = () => {
       />
       
       <div className="flex items-center justify-between">
-        <label className="flex items-center text-sm text-gray-400">
+        <label className="flex items-center text-sm text-gray-600">
           <input
             type="checkbox"
-            className="mr-2 rounded border-gray-600 bg-gray-700 text-purple-600 focus:ring-purple-500"
+            className="mr-2 rounded border-gray-300 bg-gray-50 text-black focus:ring-gray-800"
           />
           Remember me
         </label>
         <button
           type="button"
-          className="text-sm text-purple-400 hover:text-purple-300 transition-colors"
+          className="text-sm text-gray-700 hover:text-black transition-colors"
         >
           Forgot password?
         </button>
@@ -94,11 +94,11 @@ const LoginForm = () => {
         onClick={handleSubmit}
         disabled={loading}
         className="
-          w-full h-12 bg-gradient-to-r from-purple-600 to-pink-600 
-          hover:from-purple-700 hover:to-pink-700 
+          w-full h-12 bg-gradient-to-r from-black to-gray-800 
+          hover:from-gray-800 hover:to-gray-900 
           text-white font-semibold rounded-lg
           transition-all duration-300 ease-out
-          hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30
+          hover:scale-105 hover:shadow-lg hover:shadow-gray-500/30
           disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none
           flex items-center justify-center
         "
@@ -106,11 +106,11 @@ const LoginForm = () => {
         {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Sign In'}
       </button>
       
-      <p className="text-center text-sm text-gray-400">
+      <p className="text-center text-sm text-gray-600">
         Demo: Use{' '}
-        <code className="text-purple-400 bg-white/10 px-1 rounded">demo@example.com</code>
+        <code className="text-gray-700 bg-black/10 px-1 rounded">demo@example.com</code>
         {' '}with password{' '}
-        <code className="text-purple-400 bg-white/10 px-1 rounded">password123</code>
+        <code className="text-gray-700 bg-black/10 px-1 rounded">password123</code>
       </p>
     </div>
   );
