@@ -180,7 +180,7 @@ const SignupForm = () => {
     <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg">
       <div className="mb-8 text-center">
         <h2 className="text-2xl font-bold text-black mb-2">Create Account</h2>
-        <p className="text-gray-600">Sign up to get started</p>
+        <p className="text-black/70">Sign up to get started</p>
       </div>
       
       <div className="space-y-6" onKeyPress={handleKeyPress}>

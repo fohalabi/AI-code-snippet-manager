@@ -89,7 +89,7 @@ const AuthPage = ({ initialMode = 'login' }) => {
             <h1 className="text-3xl font-bold text-black mb-2">
               Welcome Back
             </h1>
-            <p className="text-gray-400">
+            <p className="text-black/70">
               {mode === 'login' 
                 ? 'Sign in to your account to continue' 
                 : 'Create your account to get started'
