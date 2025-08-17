@@ -15,12 +15,12 @@ const Button = ({
   const baseClasses = "font-semibold transition-all duration-300 flex items-center justify-center gap-3 group";
   
   const variants = {
-    primary: "bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25",
-    secondary: "border border-gray-600 hover:border-purple-500 text-gray-300 hover:text-white hover:bg-purple-500/10",
-    outline: "border border-white/20 text-white hover:bg-white/10 backdrop-blur-sm",
-    ghost: "text-slate-300 hover:text-white hover:bg-white/10",
-    gradient: "bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700 shadow-lg hover:shadow-xl",
-    slate: "bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800 border border-slate-500 text-white"
+    primary: "bg-black hover:bg-gray-800 text-white transform hover:scale-105 hover:shadow-lg",
+    secondary: "border border-gray-400 hover:border-black text-gray-600 hover:text-black hover:bg-gray-50",
+    outline: "border border-gray-300 text-gray-700 hover:bg-gray-100 hover:text-black",
+    ghost: "text-gray-600 hover:text-black hover:bg-gray-100",
+    gradient: "bg-gray-900 text-white hover:bg-black shadow-lg hover:shadow-xl",
+    slate: "bg-gray-600 hover:bg-gray-700 border border-gray-500 text-white"
   };
 
   const sizes = {

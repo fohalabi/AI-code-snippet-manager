@@ -51,22 +51,22 @@ const HeroSection = () => {
                 {/* Left Content */}
                 <div className={`space-y-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
                     {/* Badge */}
-                    <div className="inline-flex items-center gap-2 bg-ai-purple/10 border border-ai-purple/20 rounded-full px-4 py-2 text-ai-purple-light text-sm font-medium">
+                    <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium bg-gray-100 border border-gray-300 text-gray-700">
                         <Sparkles className='w-4 h-4' />
                         AI-Powered Code Organization
                     </div>      
 
                     {/* Main Headline */}
-                    <h1 className="text-5xl lg:text-6xl font-bold text-ai-light leading-tight">
+                    <h1 className="text-5xl lg:text-6xl font-bold leading-tight text-black">
                         Organize Your{' '}
-                        <span className="bg-gradient-to-r from-ai-purple to-ai-purple-light bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-gray-600 to-gray-800 bg-clip-text text-transparent">
                             Code Snippets
                         </span>{' '}
                         with AI Intelligence
                     </h1>
 
                     {/* Subheadline */}
-                    <p className="text-xl text-ai-light/70 leading-relaxed max-w-lg">
+                    <p className="text-xl leading-relaxed max-w-lg text-gray-600">
                         Stop wasting time searching through scattered code. Our AI understands your snippets, 
                         automatically categorizes them, and helps you find exactly what you need in seconds.
                         <br />
@@ -76,23 +76,22 @@ const HeroSection = () => {
 
                     {/* CTA Buttons */}
                     <div className="flex flex-col sm:flex-row gap-4">
-                        <Button 
-                            variant="primary" 
-                            size="lg"
-                            icon={<ArrowRight className="w-5 h-5" />}
+                        <button 
                             onClick={() => navigate('/auth')}
+                            className="group flex items-center gap-2 bg-black hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-95 hover:shadow-lg"
                         >
-                            Get Started Free
-                        </Button>
+                            <span>Get Started Free</span>
+                            <ArrowRight className="w-5 h-5" />
+                        </button>
 
-                        <Button 
-                            variant="secondary" 
-                            size="lg"
-                            icon={<Play className="w-5 h-5" />}
-                            iconPosition="left"
+                        <button 
+                            className="font-semibold px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-95 border bg-white hover:bg-gray-50 text-black border-gray-300"
                         >
-                            Watch Demo
-                        </Button>
+                            <div className="flex items-center gap-2">
+                                <Play className="w-5 h-5" />
+                                <span>Watch Demo</span>
+                            </div>
+                        </button>
                     </div>
 
                     {/* Social Proof */}
@@ -100,10 +99,10 @@ const HeroSection = () => {
                         <div className="flex items-center gap-2">
                             <div className="flex">
                                 {[...Array(5)].map((_, i) => (
-                                    <Star key={i} className="w-5 h-5 text-ai-purple fill-current" />
+                                    <Star key={i} className="w-5 h-5 fill-current text-gray-600" />
                                 ))}
                             </div>
-                            <span className="text-ai-light/60">4.9/5 from 2,000+ developers</span>
+                            <span className="text-gray-500">4.9/5 from 2,000+ developers</span>
                         </div>
                     </div>
                 </div>
@@ -121,11 +120,11 @@ const HeroSection = () => {
                                         <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                                         <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                                     </div>
-                                    <span className="text-ai-light/60 text-sm">CodeSnippet AI</span>
+                                    <span className="text-sm text-gray-600">CodeSnippet AI</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <Search className="w-4 h-4 text-ai-light/60" />
-                                    <Code className="w-4 h-4 text-ai-purple" />
+                                    <Search className="w-4 h-4 text-gray-600" />
+                                    <Code className="w-4 h-4 text-gray-700" />
                                 </div>
                             </div>
 
@@ -134,10 +133,10 @@ const HeroSection = () => {
                                 <input 
                                     type="text" 
                                     placeholder="Search your snippets with AI..." 
-                                    className="w-full bg-ai-dark-lighter/50 border border-ai-purple/30 rounded-lg px-4 py-3 text-ai-light placeholder-ai-light/50 focus:outline-none focus:border-ai-purple transition-colors"
+                                    className="w-full bg-gray-50 border border-gray-300 text-black rounded-lg px-4 py-3 focus:outline-none focus:border-gray-500 transition-colors"
                                 />
                                 <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                                    <Sparkles className="w-5 h-5 text-ai-purple" />
+                                    <Sparkles className="w-5 h-5 text-gray-700" />
                                 </div>
                             </div>
 
@@ -149,20 +148,22 @@ const HeroSection = () => {
                                     variant="code"
                                     className={`${
                                         activeSnippet === index 
-                                            ? 'border-ai-purple/50 scale-105 shadow-lg shadow-ai-purple/20' 
-                                            : 'border-ai-purple/20'
-                                    }`}
+                                            ? 'scale-105 shadow-lg border-gray-400' 
+                                            : 'border-gray-200'
+                                    } bg-white border transition-all duration-300`}
                                 >
                                     <div className="flex items-center justify-between mb-3">
                                         <div className="flex items-center gap-2">
-                                            <span className="text-xs bg-ai-purple/20 text-ai-purple-light px-2 py-1 rounded">
+                                            <span className="text-xs px-2 py-1 rounded bg-gray-200 text-gray-700">
                                                 {snippet.language}
                                             </span>
-                                            <span className="text-ai-light/60 text-sm">{snippet.title}</span>
+                                            <span className="text-sm text-gray-600">{snippet.title}</span>
                                         </div>
-                                        <Copy className="w-4 h-4 text-ai-light/40 hover:text-ai-light cursor-pointer transition-colors" />
+                                        <Copy 
+                                            className="w-4 h-4 cursor-pointer transition-colors text-gray-500 hover:text-black"
+                                        />
                                     </div>
-                                    <pre className="text-ai-light text-sm overflow-hidden">
+                                    <pre className="text-sm overflow-hidden text-black">
                                         <code>{snippet.code}</code>
                                     </pre>
                                 </Card>
@@ -172,22 +173,22 @@ const HeroSection = () => {
                         {/* AI Suggestions */}
                         <Card variant="suggestion" className="mt-6">
                             <div className="flex items-center gap-2 mb-2">
-                                <Sparkles className="w-4 h-4 text-ai-purple" />
-                                <span className="text-ai-purple-light text-sm font-medium">AI Suggestions</span>
+                                <Sparkles className="w-4 h-4 text-gray-600" />
+                                <span className="text-sm font-medium text-gray-700">AI Suggestions</span>
                             </div>
-                            <p className="text-ai-light/60 text-sm">
+                            <p className="text-sm text-gray-600">
                                 Based on your recent searches, you might need: "React useEffect cleanup", "Python async/await patterns"
                             </p>
                         </Card>
                     </Card>
 
                     {/* Floating Elements */}
-                    <div className="absolute -top-4 -right-4 bg-ai-purple p-3 rounded-xl shadow-lg shadow-ai-purple/30 animate-bounce">
-                        <Code className="w-6 h-6 text-ai-light" />
+                    <div className="absolute -top-4 -right-4 p-3 rounded-xl shadow-lg animate-bounce bg-black">
+                        <Code className="w-6 h-6 text-white" />
                     </div>
           
-                    <div className="absolute -bottom-4 -left-4 bg-ai-purple-light p-3 rounded-xl shadow-lg shadow-ai-purple-light/30 animate-pulse">
-                        <Sparkles className="w-6 h-6 text-ai-dark" />
+                    <div className="absolute -bottom-4 -left-4 p-3 rounded-xl shadow-lg animate-pulse bg-gray-600">
+                        <Sparkles className="w-6 h-6 text-white" />
                     </div>
                 </div>
             </div>

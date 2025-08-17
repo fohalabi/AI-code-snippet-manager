@@ -1,32 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-    --color-ai-purple: #6765ec;
-    --color-ai-dark: #00001c;
-    --color-ai-light: #f7f7ff;
-    --color-ai-purple-dark: #4c4bbd;
-    --color-ai-purple-light: #8a89ff;
-    --color-ai-dark-lighter: #1a1a3a;
+    --color-ai-purple: #4a5568;
+    --color-ai-dark: #1a202c;
+    --color-ai-light: #f7fafc;
+    --color-ai-purple-dark: #2d3748;
+    --color-ai-purple-light: #718096;
+    --color-ai-dark-lighter: #2d3748;
 }
 
 body {
-    background: linear-gradient(180deg, #00001c 0%, #1a1a3a 100%);
+    background: #ffffff;
     min-height: 100vh;
 }
 
 .hero-bg {
-    background: linear-gradient(135deg, #00001c 0%, #1a1a3a 50%, #6765ec/5 100%);
+    background: #ffffff;
 }
 
-
 @utility ai-gradient {
-  background: linear-gradient(135deg, theme(--color-ai-purple) 0%, theme(--color-ai-purple-dark) 100%);
+  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
 }
 
 @utility ai-bg-gradient {
-  background: linear-gradient(180deg, theme(--color-ai-dark) 0%, theme(--color-ai-dark-lighter) 100%);
+  background: #ffffff;
 }
 
 @utility ai-button-gradient {
-  background: linear-gradient(45deg, theme(--color-ai-purple) 0%, theme(--color-ai-purple-light) 100%);
+  background: linear-gradient(45deg, #4a5568 0%, #718096 100%);
 }

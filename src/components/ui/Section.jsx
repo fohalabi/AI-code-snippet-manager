@@ -12,8 +12,8 @@ const Section = ({
   ...props 
 }) => {
   const backgrounds = {
-    gradient: "bg-gradient-to-hr from-slate-900 via-purple-900",
-    solid: "bg-slate-900",
+    gradient: "bg-gradient-to-br from-gray-50 to-white",
+    solid: "bg-white",
     transparent: "",
     custom: ""
   };
@@ -49,11 +49,11 @@ const Section = ({
     <section id={id} className={sectionClasses} {...props}>
       {/* Animated Background Grid */}
       <div 
-        className="absolute inset-0 opacity-20"
+        className="absolute inset-0 opacity-10"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(99, 102, 241, 0.1) 1px, transparent 1px)
+            linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px)
           `,
           backgroundSize: '40px 40px',
           animation: 'gridMove 30s linear infinite'
@@ -63,14 +63,14 @@ const Section = ({
       {/* Animated Background Elements for Hero-style sections */}
       {background === 'gradient' && minHeight && (
         <div className='absolute inset-0'>
-          <div className='absolute top-1/4 left-1/4 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse'></div>
-          <div className='absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000'></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-indigo-500/5 rounded-full blur-2xl"></div>
+          <div className='absolute top-1/4 left-1/4 w-72 h-72 bg-gray-400/5 rounded-full blur-3xl animate-pulse'></div>
+          <div className='absolute bottom-1/4 right-1/4 w-96 h-96 bg-gray-600/5 rounded-full blur-3xl animate-pulse delay-1000'></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gray-500/5 rounded-full blur-2xl"></div>
         </div>
       )}
 
       {/* Grid Pattern Overlay */}
-      <div className='absolute inset-0 bg-grid-white/[0.02] bg-grid-16'></div>
+      <div className='absolute inset-0 bg-grid-black/[0.02] bg-grid-16'></div>
 
       {/* Content Container */}
       <div className={`relative z-10 ${containerClasses}`}>
