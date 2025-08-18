@@ -49,7 +49,7 @@ const Navbar = () => {
             <div className="flex justify-between items-center h-16">
                 {/* Logo */}
                 <div className="flex-shrink-0 flex items-center">
-                    <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                    <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
                         <span className="text-white font-bold text-sm">C</span>
                     </div>
                     <span className="ml-2 text-lg font-semibold text-gray-900">CodeSnap</span>
@@ -132,8 +132,8 @@ const Navbar = () => {
                         onClick={toggleProfileMenu}
                         className="flex items-center space-x-2 p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
                     >
-                        <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center">
-                            <User className="w-4 h-4 text-white" />
+                        <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                            <User className="w-4 h-4 text-black" />
                         </div>
                         <ChevronDown className="w-4 h-4" />
                     </button>

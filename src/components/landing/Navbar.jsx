@@ -1,144 +1,133 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { GiHamburgerMenu } from 'react-icons/gi';
-import { RiCloseLargeFill } from 'react-icons/ri'
-import { ArrowRight } from 'lucide-react';
-
-const styles = {
-    link: "scroll-smooth text-gray-600 hover:bg-gray-200 hover:text-black hover:shadow-md px-6 py-1 rounded-md transition-colors duration-700",
-    button: "group flex items-center gap-2 bg-black hover:bg-gray-800 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-95 hover:shadow-lg",
-    mobileButton: "group flex items-center gap-2 bg-black hover:bg-gray-800 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-95 hover:shadow-lg"
-}
+import { ArrowRight, Menu, X } from 'lucide-react';
 
 const Navbar = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const navigate = useNavigate();
 
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen)
-    }
-  return (
-    <>
-        <nav className='bg-white/95 backdrop-blur-xl border-b border-gray-200 text-black sticky top-0 z-50 w-full p-4 shadow-sm'>
-            <div className='flex justify-between items-center mx-auto container'>
+    const navigationItems = [
+        { name: 'Features', href: '#features' },
+        { name: 'Pricing', href: '#pricing' },
+        { name: 'Blog', href: 'https://medium.com/@fohlabi' },
+        { name: 'About', href: '#about' }
+    ];
 
-                {/* Desktop navbar */}
-                <div className='hidden md:flex w-full'>
-                    <div className='w-full'>
-                        <div className='flex justify-between items-center'>
-                            <div className="flex-shrink-0 flex items-center">
-                                <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center shadow-md">
-                                    <span className="text-white font-bold text-sm">C</span>
-                                </div>
-                                <span className="ml-2 text-lg font-semibold text-black">CodeSnap</span>
-                            </div>
-                            <ul className='flex space-x-4 items-center'>
-                                <li><a href="#features" className={styles.link}>Features</a></li>
-                                <li><a href="#" className={styles.link}>Pricing</a></li>
-                                <li><a href="#" className={styles.link}>Blog</a></li>
-                                <li><a href="#" className={styles.link}>About</a></li>
-                                <li><button 
-                                        className={styles.button}
-                                        onClick={() => navigate('/auth')}
-                                    >
-                                        <span>Get Started</span>
-                                        <ArrowRight className='w-4 h-4'/>
-                                    </button>
-                                </li>
-                            </ul>
+    const toggleMobileMenu = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen);
+    };
+
+    const handleNavClick = (href) => {
+        setIsMobileMenuOpen(false);
+        // Handle navigation based on href
+        if (href.startsWith('#')) {
+            // Scroll to section
+            const element = document.querySelector(href);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        } else if (href.startsWith('http')) {
+            // Open external link
+            window.open(href, '_blank', 'noopener, noreferrer');
+        }
+    };
+
+    return (
+        <nav className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-between items-center h-16">
+                    {/* Logo */}
+                    <div className="flex-shrink-0 flex items-center">
+                        <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
+                            <span className="text-white font-bold text-sm">C</span>
+                        </div>
+                        <span className="ml-2 text-lg font-semibold text-gray-900">CodeSnap</span>
+                    </div>
+
+                    {/* Desktop Navigation - Centered */}
+                    <div className="hidden md:block">
+                        <div className="ml-10 flex items-baseline space-x-1">
+                            {navigationItems.map((item) => (
+                                <a
+                                    key={item.name}
+                                    href={item.href}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        handleNavClick(item.href);
+                                    }}
+                                    className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                                >
+                                    {item.name}
+                                </a>
+                            ))}
                         </div>
                     </div>
-                </div>
-                
-                {/* Mobile navbar header */}
-                <div className='md:hidden w-full'>
-                    <div className='w-full'>
-                        <div className='flex justify-between items-center'>
-                            <div className="flex-shrink-0 flex items-center">
-                                <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center shadow-md">
-                                    <span className="text-white font-bold text-sm">C</span>
-                                </div>
-                                <span className="ml-2 text-lg font-semibold text-black">CodeSnap</span>
-                            </div>
-                            <div className='cursor-pointer bg-gray-100 p-2 rounded-md hover:bg-gray-200 transition-colors border border-gray-300'>
-                                <GiHamburgerMenu size={20} onClick={toggleMenu} className="text-black" />
-                            </div>
-                        </div>
+
+                    {/* Right Side - Get Started Button */}
+                    <div className="flex items-center space-x-4">
+                        <button 
+                            className="group hidden md:flex items-center gap-2 bg-black hover:bg-gray-800 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-95 hover:shadow-lg"
+                            onClick={() => navigate('/auth')}
+                        >
+                            <span>Get Started</span>
+                            <ArrowRight className='w-4 h-4'/>
+                        </button>
+
+                        {/* Mobile menu button */}
+                        <button
+                            onClick={toggleMobileMenu}
+                            className="md:hidden p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                        >
+                            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                        </button>
                     </div>
                 </div>
             </div>
+
+            {/* Mobile Navigation - Reference Style */}
+            {isMobileMenuOpen && (
+                <div className="md:hidden border-t border-gray-200 py-4">
+                    <div className="flex flex-col space-y-2 px-4">
+                        {navigationItems.map((item) => (
+                            <a
+                                key={item.name}
+                                href={item.href}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    handleNavClick(item.href);
+                                }}
+                                className="flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                            >
+                                <span>{item.name}</span>
+                            </a>
+                        ))}
+                        
+                        {/* Mobile Get Started Button */}
+                        <div className="pt-4">
+                            <button 
+                                className="group flex items-center justify-center gap-2 bg-black hover:bg-gray-800 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-95 hover:shadow-lg w-full"
+                                onClick={() => {
+                                    navigate('/auth');
+                                    setIsMobileMenuOpen(false);
+                                }}
+                            >
+                                <span>Get Started</span>
+                                <ArrowRight className='w-4 h-4'/>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Click outside to close mobile menu */}
+            {isMobileMenuOpen && (
+                <div
+                    className="fixed inset-0 z-40 md:hidden"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                />
+            )}
         </nav>
+    );
+};
 
-        {/* Mobile sidebar overlay */}
-        {isMenuOpen && (
-            <div 
-                className="fixed inset-0 bg-black/50 z-40 md:hidden"
-                onClick={toggleMenu}
-            />
-        )}
-
-        {/* Mobile sidebar */}
-        <div className={`
-            fixed top-0 right-0 h-full w-1/2 bg-white/95 backdrop-blur-xl z-50 
-            transform transition-transform duration-300 ease-in-out md:hidden border-l border-gray-200 shadow-xl
-            ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}
-        `}>
-            {/* Sidebar Header */}
-            <div className='flex justify-between items-center p-4 border-b border-gray-200'>
-                <div className='cursor-pointer bg-gray-100 p-2 rounded-md hover:bg-gray-200 transition-colors border border-gray-300'>
-                    <RiCloseLargeFill size={18} onClick={toggleMenu} className="text-black" />
-                </div>
-            </div>
-
-            {/* Sidebar Content */}
-            <div className='p-6 space-y-6'>
-                <ul className='flex space-y-4 flex-col'>
-                    <li>
-                        <a href="#features" 
-                           className="scroll-smooth text-gray-600 hover:bg-gray-200 hover:text-black px-4 py-3 rounded-md transition-all duration-300 block hover:shadow-md"
-                           onClick={toggleMenu}>
-                            Features
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#pricing" 
-                           className="scroll-smooth text-gray-600 hover:bg-gray-200 hover:text-black px-4 py-3 rounded-md transition-all duration-300 block hover:shadow-md"
-                           onClick={toggleMenu}>
-                            Pricing
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" 
-                           className="text-gray-600 hover:bg-gray-200 hover:text-black px-4 py-3 rounded-md transition-all duration-300 block hover:shadow-md"
-                           onClick={toggleMenu}>
-                            Blog
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" 
-                           className="text-gray-600 hover:bg-gray-200 hover:text-black px-4 py-3 rounded-md transition-all duration-300 block hover:shadow-md"
-                           onClick={toggleMenu}>
-                            About
-                        </a>
-                    </li>
-                </ul>
-                
-                <div className="pt-4">
-                    <button 
-                        className={`${styles.mobileButton} w-full justify-center`}
-                        onClick={() => {
-                            navigate('/auth');
-                            toggleMenu();
-                        }}
-                    >
-                        <span>Get Started</span>
-                        <ArrowRight className='w-4 h-4'/>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </>
-  )
-}
-
-export default Navbar
+export default Navbar;
