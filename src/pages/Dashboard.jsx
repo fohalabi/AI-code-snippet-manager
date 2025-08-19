@@ -1,5 +1,6 @@
 import { useAuth } from '../hooks/useAuth';
 import Navbar from '../components/dashboard/layout/DashboardNavbar';
+import QuickActionsPanel from '../components/dashboard/overview/QuickActionsPanel';
 import DashboardHeader from '../components/dashboard/overview/DashboardHeader';
 import { Navigate } from 'react-router-dom';
 
@@ -13,6 +14,7 @@ export default function Dashboard() {
         <div>
             <Navbar />
             <DashboardHeader />
+            <QuickActionsPanel />
         </div>
     );
 }
