@@ -9,7 +9,7 @@ const Navbar = () => {
     const navigationItems = [
         { name: 'Features', href: '#features' },
         { name: 'Pricing', href: '#pricing' },
-        { name: 'Blog', href: 'https://medium.com/@fohlabi' },
+        { name: 'Blog', href: 'https://medium.com/fohlabi' },
         { name: 'About', href: '#about' }
     ];
 

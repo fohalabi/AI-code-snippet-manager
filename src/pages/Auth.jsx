@@ -18,7 +18,7 @@ const Auth = () => {
     );
   }
 
-  if (user) {
+  /* if (user) {
     return (
       <div className='min-h-screen bg-gray-300 flex items-center justify-center'>
         <div className="bg-black backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-8 max-w-md w-full text-center">
@@ -40,7 +40,7 @@ const Auth = () => {
         </div>
       </div>
     );
-  }
+  } */
 
   return <AuthPage />;
 };

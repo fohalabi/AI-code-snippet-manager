@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Bell, User, Search, Plus, Bot, FolderOpen, LayoutDashboard, Library, Menu, X, Settings, HelpCircle, LogOut, ChevronDown } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+    const navigate = useNavigate();
+
     const [activeItem, setActiveItem] = useState(null);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isNotificationOpen, setIsNotificationOpen] = useState(false);
@@ -41,6 +44,13 @@ const Navbar = () => {
     const toggleProfileMenu = () => {
         setIsProfileMenuOpen(!isProfileMenuOpen);
         setIsNotificationOpen(false);
+    };
+
+    const handleLogout = () => {
+        // Perform logout logic here
+        navigate('/');
+
+        setIsProfileMenuOpen(false);
     };
 
     return (
@@ -156,7 +166,10 @@ const Navbar = () => {
                             </button>
                         </div>
                         <div className="border-t border-gray-100 py-2">
-                            <button className="flex items-center space-x-3 w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50">
+                            <button  
+                                className="flex items-center space-x-3 w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50" 
+                                onClick={() => handleLogout()}
+                            >
                                 <LogOut className="w-4 h-4" />
                                 <span>Logout</span>
                             </button>
