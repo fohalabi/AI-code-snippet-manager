@@ -1,13 +1,15 @@
 import React from 'react';
 import { Loader2, CheckCircle } from 'lucide-react';
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '../contexts/AuthContext';
 import AuthPage from '../components/auth/AuthPage';
 
 // Main Auth Component with routing logic
 const Auth = () => {
-  const { user, loading, signOut } = useAuth();
+  const { user, loading } = useAuth();
+  console.log('Auth - user:', user, 'loading:', loading);
 
-  if (loading) {
+
+  /*if (loading) {
     return (
       <div className='min-h-screen bg-gray-300 flex items-center justify-center'>
         <div className="flex flex-col items-center text-black">
@@ -18,7 +20,7 @@ const Auth = () => {
     );
   }
 
-  /* if (user) {
+  if (user) {
     return (
       <div className='min-h-screen bg-gray-300 flex items-center justify-center'>
         <div className="bg-black backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-8 max-w-md w-full text-center">

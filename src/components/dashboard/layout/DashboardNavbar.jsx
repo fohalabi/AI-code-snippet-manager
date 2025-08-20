@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Bell, User, Search, Plus, Bot, FolderOpen, LayoutDashboard, Library, Menu, X, Settings, HelpCircle, LogOut, ChevronDown } from 'lucide-react';
+import { useAuth } from '../../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+    const { signOut } = useAuth();
     const navigate = useNavigate();
 
     const [activeItem, setActiveItem] = useState(null);
@@ -46,11 +48,13 @@ const Navbar = () => {
         setIsNotificationOpen(false);
     };
 
-    const handleLogout = () => {
-        // Perform logout logic here
-        navigate('/');
+    const handleLogout = async() => {
+        const { error } = await signOut();
 
-        setIsProfileMenuOpen(false);
+        if (!error) {
+            //Force navigate to landing  page after successful logout
+            navigate('/', { replace: true });
+        }
     };
 
     return (
@@ -168,7 +172,7 @@ const Navbar = () => {
                         <div className="border-t border-gray-100 py-2">
                             <button  
                                 className="flex items-center space-x-3 w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50" 
-                                onClick={() => handleLogout()}
+                                onClick={handleLogout}
                             >
                                 <LogOut className="w-4 h-4" />
                                 <span>Logout</span>

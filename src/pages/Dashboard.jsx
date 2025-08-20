@@ -1,4 +1,4 @@
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '../contexts/AuthContext';
 import Navbar from '../components/dashboard/layout/DashboardNavbar';
 import QuickActionsPanel from '../components/dashboard/overview/QuickActionsPanel';
 import DashboardHeader from '../components/dashboard/overview/DashboardHeader';

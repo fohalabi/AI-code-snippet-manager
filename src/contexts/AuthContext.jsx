@@ -13,6 +13,8 @@ export const AuthProvider = ({ children }) => {
     // Get initial session
     const getInitialSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
+      console.log('Supabase session:', session); 
+      console.log('User will be set to:', session?.user ?? null);
       setUser(session?.user ?? null);
       setLoading(false);
     };
@@ -74,8 +76,21 @@ export const AuthProvider = ({ children }) => {
   const signOut = async () => {
     setLoading(true);
     try {
-      const { error } = await supabase.auth.signOut();
-      if (error) throw error;
+      // Sign out from all session globally
+      const { error } = await supabase.auth.signOut({ scope: 'global' });
+
+      if (error) {
+        console.error('Sign out error:', error);
+      } else{
+        //Force clear user state immediately
+        setUser(null);
+
+        //Clear any remaining local storage
+        localStorage.clear();
+        sessionStorage.clear();
+      }
+
+      return { error };
     } catch (error) {
       console.error('Sign out error:', error);
     } finally {
@@ -128,6 +143,8 @@ export const AuthProvider = ({ children }) => {
   const value = {
     user,
     loading,
+    isAuthenticated: !!user,
+    isLoading: loading,
     signUp,
     signIn,
     signOut,

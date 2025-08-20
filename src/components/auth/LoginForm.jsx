@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Mail, Lock, Loader2 } from 'lucide-react';
 import FloatingLabelInput from '../ui/FloatingLabelInput'
 import AuthUtils from '../../utils/auth';
-import  { useAuth } from '../../hooks/useAuth';
+import  { useAuth } from '../../contexts/AuthContext';
 
 // Login Form Component
 const LoginForm = () => {

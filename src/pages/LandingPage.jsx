@@ -7,8 +7,12 @@ import SocialProofSection from '../components/landing/SocialProofSection';
 import PricingPreviewSection from '../components/landing/PricingPreviewSection';
 import FinalCTASection from '../components/landing/FinalCTASection';
 import Footer from '../components/landing/Footer';
+import { useAuth } from '../contexts/AuthContext';
 
 const LandingPage = () => {
+  const { user, loading } = useAuth()
+  console.log('LandingPage - user:', user, 'loading:', loading);
+
   return (
     <div className="min-h-screen bg-gray-100">
       <Navbar />

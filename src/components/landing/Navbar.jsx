@@ -9,7 +9,7 @@ const Navbar = () => {
     const navigationItems = [
         { name: 'Features', href: '#features' },
         { name: 'Pricing', href: '#pricing' },
-        { name: 'Blog', href: 'https://medium.com/fohlabi' },
+        { name: 'Blog', href: 'https://medium.com/@fohlabi' },
         { name: 'About', href: '#about' }
     ];
 
@@ -19,17 +19,22 @@ const Navbar = () => {
 
     const handleNavClick = (href) => {
         setIsMobileMenuOpen(false);
-        // Handle navigation based on href
-        if (href.startsWith('#')) {
-            // Scroll to section
-            const element = document.querySelector(href);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
+    
+        // Add a small delay to allow menu to close first
+        setTimeout(() => {
+            if (href.startsWith('#')) {
+                // Scroll to section
+                const element = document.querySelector(href);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    console.warn(`Section ${href} not found`);
+                }
+            } else if (href.startsWith('http')) {
+                // Open external link
+                window.open(href, '_blank', 'noopener, noreferrer');
             }
-        } else if (href.startsWith('http')) {
-            // Open external link
-            window.open(href, '_blank', 'noopener, noreferrer');
-        }
+        }, 100);
     };
 
     return (
@@ -89,26 +94,25 @@ const Navbar = () => {
                 <div className="md:hidden border-t border-gray-200 py-4">
                     <div className="flex flex-col space-y-2 px-4">
                         {navigationItems.map((item) => (
-                            <a
+                            <button
                                 key={item.name}
-                                href={item.href}
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    handleNavClick(item.href);
-                                }}
-                                className="flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                                onClick={() => handleNavClick(item.href)}
+                                className="flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors text-gray-600 hover:text-gray-900 hover:bg-gray-50 text-left w-full"
                             >
                                 <span>{item.name}</span>
-                            </a>
+                            </button>
                         ))}
-                        
+            
                         {/* Mobile Get Started Button */}
                         <div className="pt-4">
                             <button 
                                 className="group flex items-center justify-center gap-2 bg-black hover:bg-gray-800 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-95 hover:shadow-lg w-full"
                                 onClick={() => {
-                                    navigate('/auth');
                                     setIsMobileMenuOpen(false);
+                                    // Add small delay to ensure menu closes first
+                                    setTimeout(() => {
+                                        navigate('/auth');
+                                    }, 100);
                                 }}
                             >
                                 <span>Get Started</span>
