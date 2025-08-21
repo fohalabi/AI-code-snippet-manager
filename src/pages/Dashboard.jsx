@@ -2,6 +2,7 @@ import { useAuth } from '../contexts/AuthContext';
 import Navbar from '../components/dashboard/layout/DashboardNavbar';
 import QuickActionsPanel from '../components/dashboard/overview/QuickActionsPanel';
 import DashboardHeader from '../components/dashboard/overview/DashboardHeader';
+import RecentActivityFeed from '../components/dashboard/overview/RecentActivityFeed';
 import { Navigate } from 'react-router-dom';
 
 export default function Dashboard() {
@@ -15,6 +16,7 @@ export default function Dashboard() {
             <Navbar />
             <DashboardHeader />
             <QuickActionsPanel />
+            <RecentActivityFeed />
         </div>
     );
 }
