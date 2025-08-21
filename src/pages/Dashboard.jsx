@@ -4,6 +4,7 @@ import QuickActionsPanel from '../components/dashboard/overview/QuickActionsPane
 import DashboardHeader from '../components/dashboard/overview/DashboardHeader';
 import RecentActivityFeed from '../components/dashboard/overview/RecentActivityFeed';
 import { Navigate } from 'react-router-dom';
+import AIInsightsPanel from '../components/dashboard/ai/AIInsightsPanel';
 
 export default function Dashboard() {
     const { user, loading } = useAuth();
@@ -17,6 +18,7 @@ export default function Dashboard() {
             <DashboardHeader />
             <QuickActionsPanel />
             <RecentActivityFeed />
+            <AIInsightsPanel />
         </div>
     );
 }
