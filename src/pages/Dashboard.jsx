@@ -6,6 +6,7 @@ import RecentActivityFeed from '../components/dashboard/overview/RecentActivityF
 import { Navigate } from 'react-router-dom';
 import AIInsightsPanel from '../components/dashboard/ai/AIInsightsPanel';
 import CollectionsOverview from '../components/dashboard/overview/CollectionsOverview';
+import QuickAccessSidebar from '../components/dashboard/layout/QuickAccessSidebar';
 
 export default function Dashboard() {
     const { user, loading } = useAuth();
@@ -16,6 +17,7 @@ export default function Dashboard() {
     return (
         <div>
             <Navbar />
+            <QuickAccessSidebar />
             <DashboardHeader />
             <QuickActionsPanel />
             <RecentActivityFeed />
