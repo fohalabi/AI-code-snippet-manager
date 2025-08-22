@@ -16,7 +16,7 @@ This project was inspired by:
 
 [**Live Demo**](https://ai-code-snippet-manager.vercel.app)
 
-![App Screenshot](public/code-snippet.png)
+![App Screenshot](public/code-snippet-2.png)
 
 ---
 
