@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/Dashboard';
-import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import Auth from './pages/Auth';
 import ProtectedRoute from './components/ProtectedRoute';
