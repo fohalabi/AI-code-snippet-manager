@@ -42,7 +42,7 @@ function AppRoutes() {
   );
 }
 
-function App() {
+const App = () => {
   return (
     <AuthProvider>
       <BrowserRouter>
