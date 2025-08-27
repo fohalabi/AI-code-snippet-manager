@@ -113,9 +113,9 @@ const QuickActionsPanel = ({
                 onKeyPress={(e) => e.key === 'Enter' && handleSearchSubmit()}
                 className={`
                   w-full px-3 md:px-4 py-2 md:py-3 pr-10 md:pr-12 bg-gray-50 border rounded-lg text-sm md:text-base
-                  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
+                  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent
                   transition-all duration-200
-                  ${isSearchFocused ? 'bg-white border-blue-500 shadow-sm' : 'border-gray-200 hover:border-gray-300'}
+                  ${isSearchFocused ? 'bg-white border-black shadow-sm' : 'border-gray-200 hover:border-gray-300'}
                 `}
               />
               
@@ -124,7 +124,7 @@ const QuickActionsPanel = ({
                 disabled={!searchQuery.trim()}
                 className={`
                   absolute right-2 top-1/2 transform -translate-y-1/2 p-1 md:p-2 rounded-md transition-all duration-200
-                  ${searchQuery.trim() ? 'text-blue-600 hover:text-blue-700 cursor-pointer' : 'text-gray-400 cursor-not-allowed'}
+                  ${searchQuery.trim() ? 'text-black hover:text-black cursor-pointer' : 'text-gray-400 cursor-not-allowed'}
                 `}
               >
                 <ArrowRight className="w-3 h-3 md:w-4 md:h-4" />
