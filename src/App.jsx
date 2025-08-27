@@ -6,6 +6,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import Auth from './pages/Auth';
 import ProtectedRoute from './components/ProtectedRoute';
 import PublicRoute from './components/PublicRoute';
+import Snippets from './pages/Snippets';
 import './index.css';
 
 function AppRoutes() {
@@ -38,6 +39,16 @@ function AppRoutes() {
           </ProtectedRoute>
         } 
       />
+
+      <Route 
+        path='/snippets' 
+        element={
+          <ProtectedRoute>
+            <Snippets />
+          </ProtectedRoute>
+        } 
+      />
+
     </Routes>
   );
 }

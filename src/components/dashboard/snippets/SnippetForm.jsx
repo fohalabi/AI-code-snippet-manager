@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Save } from 'lucide-react';
+import { generateId } from '../../../utils/helpers';
 
 const SnippetForm = ({ snippet, onSave, onCancel, isEditing = false }) => {
     const [formData, setFormData] = useState({
@@ -34,7 +35,7 @@ const SnippetForm = ({ snippet, onSave, onCancel, isEditing = false }) => {
         };
 
         if (isEditing) {
-            snippetData.id = generatedId();
+            snippetData.id = generateId();
             snippetData.createdAt = Date.now();
         } else {
             snippetData.id = snippet.id;
