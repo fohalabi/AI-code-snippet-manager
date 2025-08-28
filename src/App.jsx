@@ -43,9 +43,7 @@ function AppRoutes() {
       <Route 
         path='/snippets' 
         element={
-          <ProtectedRoute>
-            <Snippets />
-          </ProtectedRoute>
+          <Snippets />
         } 
       />
 

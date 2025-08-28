@@ -100,7 +100,7 @@ const QuickActionsPanel = ({
         <div className="flex items-center space-x-3">
             <div className="flex-shrink-0">
                 <div className="w-8 h-8 md:w-10 md:h-10 bg-gray-100 rounded-lg flex items-center justify-center">
-                    <Search className="w-4 h-4 md:w-5 md:h-5 text-gray-600" />
+                  <Search className="w-4 h-4 md:w-5 md:h-5 text-gray-600" />
                 </div>
             </div>
           
