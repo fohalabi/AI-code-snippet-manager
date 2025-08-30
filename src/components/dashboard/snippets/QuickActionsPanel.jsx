@@ -56,13 +56,15 @@ const QuickActionsPanel = ({
 
       {/* Action Buttons */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-        {actionButtons.map((action) => {
+        {/* {actionButtons.map((action) => {
           const IconComponent = action.icon;
           
           return (
             <button
               key={action.id}
-              onClick={action.onClick}
+              onClick= {()=> {
+                 console.log('GitHub import feature coming soon!');
+              }}
               className={`
                 group relative overflow-hidden rounded-lg p-4 md:p-6 text-left transition-all duration-200
                 ${action.isPrimary 
@@ -92,8 +94,8 @@ const QuickActionsPanel = ({
               )}
             </button>
           );
-        })}
-      </div>
+        })} 
+      </div> 
 
       {/* Search Section */}
       <div className="pt-4 border-t border-gray-100">

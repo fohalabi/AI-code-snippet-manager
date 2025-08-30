@@ -139,5 +139,7 @@ const QuickActionsPanel = ({
       </div>
     </div>
   );
+  
+  console.log('QuickActionsPanel props:', { onCreateSnippet });
 };
 export default QuickActionsPanel;

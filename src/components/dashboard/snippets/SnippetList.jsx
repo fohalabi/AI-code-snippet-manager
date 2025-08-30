@@ -4,7 +4,7 @@ import SnippetCard from './SnippetCard';
 
 const SnippetList = ({ snippets, onEdit, onDelete, onCopy, searchTerm }) => {
     const filteredSnippets = snippets.filter(snippet =>
-        snippet.title.toLowerCase().includes(searchTerm.toLowerCases()) || 
+        snippet.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
         snippet.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
         snippet.code.toLowerCase().includes(searchTerm.toLowerCase()) ||
         snippet.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))

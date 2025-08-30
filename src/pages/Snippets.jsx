@@ -3,9 +3,9 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import DashboardLayout from '../components/dashboard/layout/DashboardLayout';
-import QuickActionsPanel from '../components/dashboard/snippets/QuickActionsPanel';
-import SnippetForm from '../components/dashboard/Snippets/SnippetForm';
-import SnippeList from '../components/dashboard/Snippets/SnippetList';
+import QuickActionsPanel from '../components/dashboard/overview/QuickActionsPanel';
+import SnippetForm from '../components/dashboard/snippets/SnippetForm';
+import SnippetList from '../components/dashboard/snippets/SnippetList';
 
 export default function Snippets() {
     const { user, loading } = useAuth();
@@ -27,10 +27,12 @@ export default function Snippets() {
 
     // Save snippets to localStorage whenever snippets change
     useEffect(() => {
-        if (user?.uid) {
-            localStorage.setItem(`codeSnippets_${user.uid}`, JSON.stringify(snippets));
+        if (!user?.uid) return;
+        const savedSnippets = localStorage.getItem(`codeSnippets_${user.uid}`);
+        if (savedSnippets) {
+            setSnippets(JSON.parse(savedSnippets));
         }
-    }, [snippets, user?.uid]);
+    }, [user.uid]);
 
     // Authentication check
     if (loading) return <div>loading...</div>;
@@ -38,9 +40,11 @@ export default function Snippets() {
 
     // Event handlers
     const handleCreateSnippet = () => {
+        console.log('Create snippet clicked');
         setCurrentView('create');
         setEditingSnippet(null);
     };
+
 
     const handleEditSnippet = (snippet) => {
         setEditingSnippet(snippet);
@@ -148,7 +152,7 @@ export default function Snippets() {
                         </div>
                     )}
 
-                    <SnippetsList
+                    <SnippetList
                         snippets={snippets}
                         onEdit={handleEditSnippet}
                         onDelete={handleDeleteSnippet}

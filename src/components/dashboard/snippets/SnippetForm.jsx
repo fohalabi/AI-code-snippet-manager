@@ -35,11 +35,11 @@ const SnippetForm = ({ snippet, onSave, onCancel, isEditing = false }) => {
         };
 
         if (isEditing) {
-            snippetData.id = generateId();
-            snippetData.createdAt = Date.now();
-        } else {
             snippetData.id = snippet.id;
             snippetData.createdAt = snippet.createdAt;
+        } else {
+            snippetData.id = generateId();
+            snippetData.createdAt = Date.now();
         }
 
         onSave(snippetData);
