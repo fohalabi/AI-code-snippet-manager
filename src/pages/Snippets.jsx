@@ -17,8 +17,9 @@ export default function Snippets() {
     const [editingSnippet, setEditingSnippet] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
 
-    //Load user's snippets from localStorage on mount
+    // Load user's snippets from localStorage on mount
     useEffect(() => {
+        if (!user?.uid) return;
         const savedSnippets = localStorage.getItem(`codeSnippets_${user.uid}`);
         if (savedSnippets) {
             setSnippets(JSON.parse(savedSnippets));
@@ -28,23 +29,19 @@ export default function Snippets() {
     // Save snippets to localStorage whenever snippets change
     useEffect(() => {
         if (!user?.uid) return;
-        const savedSnippets = localStorage.getItem(`codeSnippets_${user.uid}`);
-        if (savedSnippets) {
-            setSnippets(JSON.parse(savedSnippets));
-        }
-    }, [user.uid]);
+        localStorage.setItem(`codeSnippets_${user.uid}`, JSON.stringify(snippets));
+    }, [snippets, user.uid]);
 
     // Authentication check
     if (loading) return <div>loading...</div>;
     if (!user) return <Navigate to="/auth" />;
 
-    // Event handlers
+    // Simple event handlers (no useCallback for now)
     const handleCreateSnippet = () => {
-        console.log('Create snippet clicked');
+        console.log('🟢 CREATE BUTTON CLICKED - Setting view to create');
         setCurrentView('create');
         setEditingSnippet(null);
     };
-
 
     const handleEditSnippet = (snippet) => {
         setEditingSnippet(snippet);
@@ -52,6 +49,7 @@ export default function Snippets() {
     };
 
     const handleSaveSnippet = (snippetData) => {
+        console.log('🟢 SAVING SNIPPET:', snippetData);
         if (currentView === 'edit') {
             setSnippets(prev => prev.map(s => s.id === snippetData.id ? snippetData : s));
         } else {
@@ -69,7 +67,6 @@ export default function Snippets() {
 
     const handleCopySnippet = (snippetId) => {
         console.log('Snippet copied:', snippetId);
-        // Could add toast notification here
     };
 
     const handleSearch = (query) => {
@@ -92,6 +89,13 @@ export default function Snippets() {
     const handleBackToDashboard = () => {
         navigate('/dashboard');
     };
+
+    // Debug current state
+    console.log('🔍 Snippets component render:', {
+        currentView,
+        handleCreateSnippet: typeof handleCreateSnippet,
+        snippetsCount: snippets.length
+    });
 
     return (
         <DashboardLayout>
@@ -126,6 +130,15 @@ export default function Snippets() {
                     <span className="hidden sm:inline">Dashboard</span>
                     </button>
                 </div>
+                </div>
+
+                {/* Debug info */}
+                <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                    <p className="text-sm">
+                        <strong>Debug:</strong> Current view: {currentView} | 
+                        Function exists: {typeof handleCreateSnippet === 'function' ? '✅' : '❌'} |
+                        Snippets: {snippets.length}
+                    </p>
                 </div>
 
                 {/* Content based on current view */}
@@ -163,10 +176,14 @@ export default function Snippets() {
                 )}
 
                 {currentView === 'create' && (
-                <SnippetForm
-                    onSave={handleSaveSnippet}
-                    onCancel={handleBackToList}
-                />
+                <div className="p-6 bg-green-50 border border-green-200 rounded-lg">
+                    <h2 className="text-xl font-bold mb-4">🎉 Create Mode Active!</h2>
+                    <p className="mb-4">The handleCreateSnippet function worked! Now showing create form:</p>
+                    <SnippetForm
+                        onSave={handleSaveSnippet}
+                        onCancel={handleBackToList}
+                    />
+                </div>
                 )}
 
                 {currentView === 'edit' && editingSnippet && (

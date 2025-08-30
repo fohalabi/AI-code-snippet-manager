@@ -10,10 +10,28 @@ const QuickActionsPanel = ({
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchFocused, setIsSearchFocused] = useState(false);
 
+  // Debug logging
+  console.log('QuickActionsPanel rendered with props:', { 
+    onCreateSnippet: typeof onCreateSnippet,
+    onImportGitHub: typeof onImportGitHub,
+    onAIGenerate: typeof onAIGenerate,
+    onSearch: typeof onSearch
+  });
+
   const handleSearchSubmit = () => {
     if (searchQuery.trim()) {
       onSearch(searchQuery.trim());
       setSearchQuery('');
+    }
+  };
+
+  const handleCreateClick = () => {
+    console.log('Create button clicked, calling onCreateSnippet...');
+    if (onCreateSnippet) {
+      onCreateSnippet();
+      console.log('onCreateSnippet called successfully');
+    } else {
+      console.error('onCreateSnippet is not defined!');
     }
   };
 
@@ -23,7 +41,7 @@ const QuickActionsPanel = ({
       title: 'Create New Snippet',
       description: 'Start building a new code snippet',
       icon: Plus,
-      onClick: onCreateSnippet,
+      onClick: handleCreateClick, // Use the debug version
       gradient: 'from-blue-500 to-blue-600',
       isPrimary: true
     },
@@ -139,7 +157,6 @@ const QuickActionsPanel = ({
       </div>
     </div>
   );
-  
-  console.log('QuickActionsPanel props:', { onCreateSnippet });
 };
+
 export default QuickActionsPanel;
