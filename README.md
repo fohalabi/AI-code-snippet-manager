@@ -43,7 +43,7 @@ This project was inspired by:
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/ai-code-snippet-manager.git
+git clone https://github.com/fohalabi/ai-code-snippet-manager.git
 
 # Navigate into the project folder
 cd ai-code-snippet-manager
@@ -55,7 +55,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ---
 
