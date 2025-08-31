@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import { Plus, Github, Sparkles, Search, ArrowRight } from 'lucide-react';
 
-const QuickActionsPanel = ({
-  onCreateSnippet,
-  onImportGitHub,
-  onAIGenerate,
-  onSearch
-}) => {
+const QuickActionsPanel = (props) => {
+  // Debug ALL props first
+  console.log('🔍 ALL PROPS RECEIVED:', props);
+  console.log('🔍 PROPS KEYS:', Object.keys(props));
+  console.log('🔍 onCreateSnippet in props:', 'onCreateSnippet' in props);
+  console.log('🔍 onCreateSnippet type:', typeof props.onCreateSnippet);
+
+  // Now destructure
+  const {
+    onCreateSnippet,
+    onImportGitHub,
+    onAIGenerate,
+    onSearch
+  } = props;
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchFocused, setIsSearchFocused] = useState(false);
 
@@ -26,12 +34,17 @@ const QuickActionsPanel = ({
   };
 
   const handleCreateClick = () => {
-    console.log('Create button clicked, calling onCreateSnippet...');
+    console.log('🔴 Create button clicked!');
+    console.log('🔴 onCreateSnippet at click time:', onCreateSnippet);
+    console.log('🔴 onCreateSnippet type at click time:', typeof onCreateSnippet);
+    console.log('🔴 ALL PROPS at click time:', props);
+    
     if (onCreateSnippet) {
+      console.log('🟢 Calling onCreateSnippet...');
       onCreateSnippet();
-      console.log('onCreateSnippet called successfully');
+      console.log('🟢 onCreateSnippet called successfully');
     } else {
-      console.error('onCreateSnippet is not defined!');
+      console.error('🔴 onCreateSnippet is not defined!');
     }
   };
 

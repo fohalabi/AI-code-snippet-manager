@@ -3,7 +3,8 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import DashboardLayout from '../components/dashboard/layout/DashboardLayout';
-import QuickActionsPanel from '../components/dashboard/overview/QuickActionsPanel';
+// import QuickActionsPanel from '../components/dashboard/overview/QuickActionsPanel';
+import IsolatedTest from '../components/dashboard/snippets/IsolateTest';
 import SnippetForm from '../components/dashboard/snippets/SnippetForm';
 import SnippetList from '../components/dashboard/snippets/SnippetList';
 
@@ -16,6 +17,10 @@ export default function Snippets() {
     const [currentView, setCurrentView] = useState('list'); // 'list', 'create', 'edit'
     const [editingSnippet, setEditingSnippet] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
+
+    // Authentication check FIRST
+    if (loading) return <div>loading...</div>;
+    if (!user) return <Navigate to="/auth" />;
 
     // Load user's snippets from localStorage on mount
     useEffect(() => {
@@ -32,70 +37,56 @@ export default function Snippets() {
         localStorage.setItem(`codeSnippets_${user.uid}`, JSON.stringify(snippets));
     }, [snippets, user.uid]);
 
-    // Authentication check
-    if (loading) return <div>loading...</div>;
-    if (!user) return <Navigate to="/auth" />;
-
-    // Simple event handlers (no useCallback for now)
-    const handleCreateSnippet = () => {
-        console.log('🟢 CREATE BUTTON CLICKED - Setting view to create');
-        setCurrentView('create');
-        setEditingSnippet(null);
-    };
-
-    const handleEditSnippet = (snippet) => {
-        setEditingSnippet(snippet);
-        setCurrentView('edit');
-    };
-
-    const handleSaveSnippet = (snippetData) => {
-        console.log('🟢 SAVING SNIPPET:', snippetData);
-        if (currentView === 'edit') {
-            setSnippets(prev => prev.map(s => s.id === snippetData.id ? snippetData : s));
-        } else {
-            setSnippets(prev => [snippetData, ...prev]);
+    // Event handlers - define them as object properties to ensure they exist
+    const handlers = {
+        createSnippet: () => {
+            console.log('🟢 CREATE HANDLER CALLED');
+            setCurrentView('create');
+            setEditingSnippet(null);
+        },
+        editSnippet: (snippet) => {
+            setEditingSnippet(snippet);
+            setCurrentView('edit');
+        },
+        saveSnippet: (snippetData) => {
+            console.log('🟢 SAVING SNIPPET:', snippetData);
+            if (currentView === 'edit') {
+                setSnippets(prev => prev.map(s => s.id === snippetData.id ? snippetData : s));
+            } else {
+                setSnippets(prev => [snippetData, ...prev]);
+            }
+            setCurrentView('list');
+            setEditingSnippet(null);
+        },
+        deleteSnippet: (snippetId) => {
+            if (window.confirm('Are you sure you want to delete this snippet?')) {
+                setSnippets(prev => prev.filter(s => s.id !== snippetId));
+            }
+        },
+        copySnippet: (snippetId) => {
+            console.log('Snippet copied:', snippetId);
+        },
+        search: (query) => {
+            setSearchTerm(query);
+        },
+        importGitHub: () => {
+            alert('GitHub import feature coming soon!');
+        },
+        aiGenerate: () => {
+            alert('AI generation feature coming soon!');
+        },
+        backToList: () => {
+            setCurrentView('list');
+            setEditingSnippet(null);
+        },
+        backToDashboard: () => {
+            navigate('/dashboard');
         }
-        setCurrentView('list');
-        setEditingSnippet(null);
     };
 
-    const handleDeleteSnippet = (snippetId) => {
-        if (window.confirm('Are you sure you want to delete this snippet?')) {
-            setSnippets(prev => prev.filter(s => s.id !== snippetId));
-        }
-    };
-
-    const handleCopySnippet = (snippetId) => {
-        console.log('Snippet copied:', snippetId);
-    };
-
-    const handleSearch = (query) => {
-        setSearchTerm(query);
-    };
-
-    const handleImportGitHub = () => {
-        alert('GitHub import feature coming soon!');
-    };
-
-    const handleAIGenerate = () => {
-        alert('AI generation feature coming soon!');
-    };
-
-    const handleBackToList = () => {
-        setCurrentView('list');
-        setEditingSnippet(null);
-    };
-
-    const handleBackToDashboard = () => {
-        navigate('/dashboard');
-    };
-
-    // Debug current state
-    console.log('🔍 Snippets component render:', {
-        currentView,
-        handleCreateSnippet: typeof handleCreateSnippet,
-        snippetsCount: snippets.length
-    });
+    // Debug handlers
+    console.log('🔍 Handlers object:', handlers);
+    console.log('🔍 createSnippet function:', typeof handlers.createSnippet);
 
     return (
         <DashboardLayout>
@@ -144,11 +135,11 @@ export default function Snippets() {
                 {/* Content based on current view */}
                 {currentView === 'list' && (
                 <>
-                    <QuickActionsPanel
-                        onCreateSnippet={handleCreateSnippet}
-                        onImportGitHub={handleImportGitHub}
-                        onAIGenerate={handleAIGenerate}
-                        onSearch={handleSearch}
+                    <IsolatedTest
+                        onCreateSnippet={handlers.createSnippet}
+                        onImportGitHub={handlers.importGitHub}
+                        onAIGenerate={handlers.aiGenerate}
+                        onSearch={handlers.search}
                     />
                     
                     {searchTerm && (
@@ -167,9 +158,9 @@ export default function Snippets() {
 
                     <SnippetList
                         snippets={snippets}
-                        onEdit={handleEditSnippet}
-                        onDelete={handleDeleteSnippet}
-                        onCopy={handleCopySnippet}
+                        onEdit={handlers.editSnippet}
+                        onDelete={handlers.deleteSnippet}
+                        onCopy={handlers.copySnippet}
                         searchTerm={searchTerm}
                     />
                 </>
@@ -180,8 +171,8 @@ export default function Snippets() {
                     <h2 className="text-xl font-bold mb-4">🎉 Create Mode Active!</h2>
                     <p className="mb-4">The handleCreateSnippet function worked! Now showing create form:</p>
                     <SnippetForm
-                        onSave={handleSaveSnippet}
-                        onCancel={handleBackToList}
+                        onSave={handlers.saveSnippet}
+                        onCancel={handlers.backToList}
                     />
                 </div>
                 )}
@@ -189,8 +180,8 @@ export default function Snippets() {
                 {currentView === 'edit' && editingSnippet && (
                 <SnippetForm
                     snippet={editingSnippet}
-                    onSave={handleSaveSnippet}
-                    onCancel={handleBackToList}
+                    onSave={handlers.saveSnippet}
+                    onCancel={handlers.backToList}
                     isEditing={true}
                 />
                 )}
