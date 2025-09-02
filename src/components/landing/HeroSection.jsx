@@ -47,9 +47,9 @@ const HeroSection = () => {
 
     return(
         <Section minHeight={true} containerSize="default">
-            <div className='grid lg:grid-cols-2 gap-6 lg:gap-12 items-center min-h-screen px-4 sm:px-6 lg:px-0'>
+            <div className='grid lg:grid-cols-2 gap-6 lg:gap-12 items-center min-h-[60vh] sm:min-h-[70vh] lg:min-h-screen px-4 sm:px-6 lg:px-0'>
                 {/* Left Content */}
-                <div className={`space-y-4 sm:space-y-6 lg:space-y-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
+                <div className={`space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
                     {/* Badge */}
                     <div className="inline-flex items-center gap-2 rounded-full px-3 py-2 sm:px-4 text-xs sm:text-sm font-medium bg-gray-100 border border-gray-300 text-gray-700">
                         <Sparkles className='w-3 h-3 sm:w-4 sm:h-4' />
@@ -95,7 +95,7 @@ const HeroSection = () => {
                     </div>
 
                     {/* Social Proof */}
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 pt-2 sm:pt-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 md:gap-6 pt-1 sm:pt-2 md:pt-4">
                         <div className="flex flex-col sm:flex-row sm:items-center gap-2">
                             <div className="flex">
                                 {[...Array(5)].map((_, i) => (
@@ -108,7 +108,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* Right Visual */}
-                <div className={`transition-all duration-1000 delay-300 mt-8 lg:mt-0 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+                <div className={`transition-all duration-1000 delay-300 mt-6 sm:mt-8 lg:mt-0 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
                     <div className="relative scale-90 sm:scale-95 lg:scale-100">
                         {/* Main Interface Mockup */}
                         <Card variant="interface">
