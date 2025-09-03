@@ -213,8 +213,7 @@ const Footer = () => {
                 Sitemap
               </a>
               <div className="flex items-center space-x-2 text-gray-600 text-sm">
-                <span>Made with</span>
-                <span className="text-red-500 animate-pulse">♥</span>
+                <span>Made</span>
                 <span>for developers</span>
               </div>
             </div>
