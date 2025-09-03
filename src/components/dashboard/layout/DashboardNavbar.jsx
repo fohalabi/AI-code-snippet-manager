@@ -4,7 +4,7 @@ import { useAuth } from '../../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
-    const { signOut } = useAuth();
+    const { signOut, user } = useAuth();
     const navigate = useNavigate();
 
     const [activeItem, setActiveItem] = useState(null);
@@ -154,10 +154,12 @@ const Navbar = () => {
 
                     {/* Profile Dropdown */}
                     {isProfileMenuOpen && (
-                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+                    <div className="absolute right-0 mt-2 w-48 min-w-0 bg-white rounded-lg shadow-lg border border-gray-200 z-50 mr-2 sm:mr-0">
                         <div className="p-4 border-b border-gray-100">
-                            <p className="text-sm font-medium text-gray-900">John Doe</p>
-                            <p className="text-xs text-gray-500">john@example.com</p>
+                            <p className="text-sm font-medium text-gray-900">
+                                {user?.user_metadata?.name || user?.email?.split('@')[0] || 'User'}
+                            </p>
+                            <p className="text-xs text-gray-500">{user?.email || 'No email'}</p>
                         </div>
                         <div className="py-2">
                             <button className="flex items-center space-x-3 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
