@@ -105,13 +105,7 @@ const Navbar = () => {
                 ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}
             `}>
                 {/* Sidebar Header */}
-                <div className="flex items-center justify-between p-6 border-b border-gray-200">
-                    <div className="flex items-center">
-                        <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
-                            <span className="text-white font-bold text-sm">C</span>
-                        </div>
-                        <span className="ml-2 text-lg font-semibold text-gray-900">CodeSnap</span>
-                    </div>
+                <div className="flex items-center justify-end p-6 border-b border-gray-200">
                     <button
                         onClick={() => setIsMobileMenuOpen(false)}
                         className="p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-50"
@@ -121,9 +115,9 @@ const Navbar = () => {
                 </div>
 
                 {/* Sidebar Content */}
-                <div className="flex flex-col justify-between" style={{ height: 'calc(100vh - 73px)' }}>
+                <div className='flex flex-col' style={{ height: 'calc(100vh - 89px)' }}>
                     {/* Navigation Links */}
-                    <div className="flex-1 py-6 px-6">
+                    <div className="flex-1 py-6 px-6 overflow-y-auto">
                         <div className="space-y-2">
                             {navigationItems.map((item) => (
                                 <button
