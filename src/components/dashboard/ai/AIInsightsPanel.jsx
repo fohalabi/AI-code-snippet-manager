@@ -112,7 +112,7 @@ const AIInsightsPanel = ({
 
                     {/* Content */}
                     <div className="flex items-start space-x-3">
-                        <div className={`p-2 rounded-lg bg-white ${config.iconColor}`} flex-shrink-0>
+                        <div className={`p-2 rounded-lg bg-white ${config.iconColor} flex-shrink-0`}>
                             <Brain className="h-5 w-5" />
                         </div>
                         <div className="flex-1 min-w-0">
@@ -125,7 +125,7 @@ const AIInsightsPanel = ({
             
                             {/* Metadata */}
                             {insight.metadata && (
-                                <div className="flex flex-wrap item-center gap-2 sm:gap-4 mt-2 text-xs text-gray-500">
+                                <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-2 text-xs text-gray-500">
                                     {insight.metadata.confidence && (
                                         <span>Confidence: {Math.round(insight.metadata.confidence * 100)}%</span>
                                     )}

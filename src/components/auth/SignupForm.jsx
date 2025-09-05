@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Lock, User, Loader2, CheckCircle } from 'lucide-react';
+import { useAuth } from '../../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 // FloatingLabelInput Component (since it's imported)
 const FloatingLabelInput = ({ 
@@ -14,6 +16,7 @@ const FloatingLabelInput = ({
   disabled, 
   autoFocus 
 }) => {
+  
   return (
     <div className="relative">
       <div className="relative">
@@ -100,22 +103,6 @@ const AuthUtils = {
   }
 };
 
-// Mock useAuth hook
-const useAuth = () => {
-  const [loading, setLoading] = useState(false);
-  
-  const signUp = async (email, password, name) => {
-    setLoading(true);
-    // Simulate API call
-    setTimeout(() => {
-      setLoading(false);
-      console.log('Signing up:', { email, password, name });
-    }, 2000);
-  };
-  
-  return { signUp, loading };
-};
-
 // Signup Form Component
 const SignupForm = () => {
   const [formData, setFormData] = useState({ name: '', email: '', password: '', confirmPassword: '' });
@@ -124,6 +111,7 @@ const SignupForm = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const { signUp, loading } = useAuth();
+  const navigate = useNavigate();
 
   const validateForm = () => {
     const newErrors = {};
@@ -155,9 +143,16 @@ const SignupForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (validateForm()) {
-      signUp(formData.email, formData.password, formData.name);
+      try {
+        await signUp(formData.email, formData.password, formData.name);
+        // redirects after successful signup
+        navigate('/dashboard');
+      } catch (error) {
+        console.error('signup failed:', error);
+        // show error message to users
+      } 
     }
   };
 
