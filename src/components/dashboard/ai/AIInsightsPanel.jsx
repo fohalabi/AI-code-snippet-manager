@@ -195,7 +195,7 @@ const AIInsightsPanel = ({
 
         {/* Tabs */}
         <div className="border-b border-gray-200">
-        <nav className="flex space-x-8 px-6">
+        <nav className="flex flex-wrap gap-2 sm:gap-8 sm:space-x-0 px-6">
             {tabs.map((tab) => {
                 const TabIcon = tab.icon;
                 const isActive = activeTab === tab.id;
@@ -203,7 +203,7 @@ const AIInsightsPanel = ({
                     <button
                         key={tab.id}
                         onClick={() => setActiveTab(tab.id)}
-                        className={`flex items-center space-x-2 py-4 border-b-2 text-sm font-medium transition-colors ${
+                        className={`flex items-center space-x-2 py-4 border-b-2 text-sm font-medium transition-colors whitespace-nowrap ${
                             isActive
                                 ? 'border-blue-500 text-blue-600'
                                 : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
