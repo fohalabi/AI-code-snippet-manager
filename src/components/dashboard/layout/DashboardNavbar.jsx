@@ -111,7 +111,7 @@ const Navbar = () => {
 
                     {/* Notifications Dropdown */}
                     {isNotificationOpen && (
-                        <div className="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+                        <div className="absolute right-0 mt-2 w-48 min-w-0 bg-white rounded-lg shadow-lg border border-gray-200 z-50 mr-2 sm:mr-0">
                             <div className="p-4 border-b border-gray-100">
                                 <h3 className="text-sm font-semibold text-gray-900">Notifications</h3>
                             </div>
